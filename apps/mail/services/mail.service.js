@@ -10,7 +10,8 @@ export const mailService = {
     get,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    getEmptyMail
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -41,6 +42,7 @@ function remove(mailId) {
 }
 
 function save(mail) {
+    // console.log('mail:', mail)
     if (mail.id) {
         return asyncStorageService.put(MAIL_KEY, mail)
     } else {

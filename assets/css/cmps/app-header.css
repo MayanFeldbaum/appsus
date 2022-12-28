@@ -1,6 +1,5 @@
 header {
     background-color: var(--header-clr);
-    margin-bottom: .5em;
 }
 
 .app-header {
@@ -8,6 +7,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    margin-bottom: .5em;
 }
 
 nav a {

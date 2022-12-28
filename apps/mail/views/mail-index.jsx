@@ -24,14 +24,14 @@ export function MailIndex() {
         setFilterBy(filterBy)
     }
 
-    console.log('mails:', mails)
     return <section className="mail-index mail-layout">
-
         <MailFilter onSetFilter={onSetFilter} />
-        <MailList mails={mails} />
-        {/* <MailFolderList />  */}
+        <section className="mail-main">
+            <MailFolderList />
+            <MailList mails={mails} />
+        </section>
         {/* navbar */}
-        {/* <MailCompose /> */}
+        <MailCompose />
     </section>
 }
 

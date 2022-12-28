@@ -1,0 +1,67 @@
+
+@font-face {
+    font-family: fa-solid;
+    src: url(../../fonts/font-awesome/fa-solid-900.ttf);
+}
+
+@font-face {
+    font-family: fa-regular;
+    src: url(../../fonts/font-awesome/fa-regular-400.ttf);
+}
+
+.fa-solid:after {
+    font-family: fa;
+    color: var(--clr-font);
+}
+
+.fa-solid.glass:after {
+    content: "\f002";
+}
+
+.fa-solid.arrows::after {
+    content: "\e099";
+}
+
+.fa-solid.up:after {
+    content: "\f062";
+}
+
+.fa-solid.down:after {
+    content: "\f063";
+}
+
+.fa-solid.plus:after {
+    content: "\2b";
+}
+
+.fa-solid.trash-can:after {
+    content: "\f2ed";
+}
+
+.fa-solid.palette:after {
+    content: "\f53f";
+}
+
+.fa-solid.left:after {
+    content: "\f036";
+}
+
+.fa-solid.center:after {
+    content: "\f037";
+}
+
+.fa-solid.right:after {
+    content: "\f038";
+}
+
+.fa-solid.size:after {
+    content: "\f034";
+}
+
+.fa-solid.filter:after{
+    content: "\f0b0";
+}
+
+.fa-solid.sort:after {
+    content: "\f0dd";
+}

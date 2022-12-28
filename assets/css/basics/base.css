@@ -34,7 +34,8 @@ table {
     border-color: transparent;
 }
 
-input {
+input,
+select {
     font-size: 1.1428rem;
     padding: .75em 1em;
     border: none;

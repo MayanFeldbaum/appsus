@@ -1,5 +1,6 @@
 header {
     background-color: var(--header-clr);
+    margin-bottom: .5em;
 }
 
 .app-header {

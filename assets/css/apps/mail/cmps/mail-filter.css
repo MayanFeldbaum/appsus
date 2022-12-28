@@ -2,7 +2,16 @@
     margin-bottom: .5em;
 }
 
-.mail-filter input{
+.mail-filter input {
     background-color: var(--bgc-input-clr);
 }
 
+.mail-filter select {
+    width: 3em;
+    margin-left: 1em;
+}
+
+.mail-filter form {
+    display: flex;
+    justify-content: space-between;
+}

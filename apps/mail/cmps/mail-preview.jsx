@@ -7,11 +7,12 @@ export function MailPreview({mail}) {
     // Click on an email-preview – opens the email for reading
     // Show a read/unread state per email
 
-    const {id, subject, body, sentAt, from, to} = mail
+    const {id, subject, body, sentAt, from, to, isRead} = mail
     const [isExpanded, setIsExpanded] = useState(false)
 
+    const readDisplay = isRead ? 'read' : 'unread'
     return <Fragment>
-        <tr onClick={() => {
+        <tr className={readDisplay} onClick={() => {
             setIsExpanded(!isExpanded)
         }}>
             <td>{from}</td>

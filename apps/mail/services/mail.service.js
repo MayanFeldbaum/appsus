@@ -18,12 +18,16 @@ function query(filterBy = getDefaultFilter()) {
         .then(mails => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => {
-                    console.log('mail.body:', mail.body)
-                    return regex.test(mail.subject) || regex.test(mail.body)
-                })
+                mails = mails.filter(mail => regex.test(mail.subject) || regex.test(mail.body))
             }
-            // TODO: filterby
+
+            if (filterBy.isRead) {
+                if (filterBy.isRead === 'read') {
+                    mails = mails.filter(mail => mail.isRead)
+                } else if (filterBy.isRead === 'unread') {
+                    mails = mails.filter(mail => !mail.isRead)
+                }
+            }
             return mails
         })
 }
@@ -58,7 +62,15 @@ function getEmptyMail(subject = '', body = '', sentAt = '', from = '', to = '') 
 }
 
 function getDefaultFilter() {
-    return { txt: '', isRead: false }
+    return { status: '', txt: '', isRead: false, isStared: true, lables: [] }
+}
+
+const criteria = {
+    status: 'inbox/sent/trash/draft',
+    txt: 'puki', // no need to support complex text search 
+    isRead: true, // (optional property, if missing: show all)
+    isStared: true, // (optional property, if missing: show all)
+    lables: ['important', 'romantic'] // has any of the labels 
 }
 
 function _createMails() {
@@ -92,10 +104,3 @@ const loggedinUser = {
     email: 'user@appsus.com', fullname: 'Mahatma Appsus'
 }
 
-const criteria = {
-    status: 'inbox/sent/trash/draft',
-    txt: 'puki', // no need to support complex text search 
-    isRead: true, // (optional property, if missing: show all)
-    isStared: true, // (optional property, if missing: show all)
-    lables: ['important', 'romantic'] // has any of the labels 
-}

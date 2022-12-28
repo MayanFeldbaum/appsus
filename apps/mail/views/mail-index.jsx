@@ -20,14 +20,14 @@ export function MailIndex() {
             .then(mails => setMails(mails))
     }
 
-    function onSetFilter(filterByFromFilter) {
-        setFilterBy(filterByFromFilter)
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
     }
 
     console.log('mails:', mails)
     return <section className="mail-index mail-layout">
 
-        <MailFilter onSetFilter={onSetFilter}/>
+        <MailFilter onSetFilter={onSetFilter} />
         <MailList mails={mails} />
         {/* <MailFolderList />  */}
         {/* navbar */}

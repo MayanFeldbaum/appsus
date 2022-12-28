@@ -1,8 +1,10 @@
 const { useState, useEffect } = React
 
+import { mailService } from "../services/mail.service.js"
+
 export function MailFilter({ onSetFilter }) {
     // Filter emails: by search, by read/unread
-    const [filterBy, setFilterBy] = useState('')
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
     useEffect(() => {
         onSetFilter(filterBy)
@@ -23,13 +25,12 @@ export function MailFilter({ onSetFilter }) {
                 placeholder="Search"
                 onChange={handleChange}
             />
+
+            <select name="isRead" onChange={handleChange}>
+                <option value="all">All</option>
+                <option value="read">Read emails</option>
+                <option value="unread">Unread emails</option>
+            </select>
         </form>
     </section>
 }
-
-// The emailService query function should get a criteria object, here is an idea:
-// const criteria = {
-// status: 'inbox/sent/trash/draft',
-// txt: 'puki', // no need to support complex text search isRead: true, // (optional property, if missing: show all)
-// isStared: true, // (optional property, if missing: show all)
-// lables: ['important', 'romantic'] // has any of the labels }

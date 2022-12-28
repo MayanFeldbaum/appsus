@@ -5,37 +5,26 @@ import { noteService } from '../services/note.service.js'
 
 export function NoteFilter({ onSetFilter }) {
 
-    const [filterByToEdit, setFilterByToEdit] = useState(noteService.getDefaultFilter())
+    const [filterByToEdit, setFilterByToEdit] = useState('')
 
     useEffect(() => {
         onSetFilter(filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {
-        let { value, name: field, type } = target
-        value = (type === 'number') ? +value : value
-        setFilterByToEdit((prevFilter) => {
-            return { ...prevFilter, [field]: value }
-        })
-    }
-
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilter(filterByToEdit)
+        let { value } = target
+        setFilterByToEdit(value)
+        return onSetFilter(filterByToEdit)
     }
 
     return <section className="note-filter">
-        <form onSubmit={onSubmitFilter}>
-            <label htmlFor="title">Search By</label>
-            <input type="text"
-                id="title"
-                name="txt"
-                placeholder="By Title"
-                value={filterByToEdit.txt}
-                onChange={handleChange}
-            />
-
-        </form>
-
+        <label htmlFor="title"></label>
+        <input type="text"
+            id="title"
+            name="txt"
+            placeholder="Search..."
+            value={filterByToEdit.txt}
+            onChange={handleChange}
+        />
     </section>
 }

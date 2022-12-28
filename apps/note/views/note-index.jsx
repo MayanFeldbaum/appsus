@@ -2,7 +2,9 @@ const { useState, useEffect } = React
 
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
-import { NoteTxt } from '../cmps/note-txt.jsx'
+// import { NoteTxt } from '../cmps/note-txt.jsx'
+import { NoteAdd } from '../cmps/note-add.jsx'
+
 
 import { notesService } from '../services/note.service.js'
 
@@ -12,21 +14,21 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     // const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState('')
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [filterBy])
 
     function loadNotes() {
-        notesService.query()
+        notesService.query(filterBy)
             .then(notesToUpdate => setNotes(notesToUpdate))
     }
 
-    // function onSetFilter(filterByFromFilter) {
-    //     setFilterBy(filterByFromFilter)
-    // }
+    function onSetFilter(filterByFromFilter) {
+        setFilterBy(filterByFromFilter)
+    }
     
-console.log(notes);
     function onRemoveNote(noteId) {
         notesService.remove(noteId)
             .then(() => {
@@ -46,8 +48,8 @@ console.log(notes);
 
     if (!notes) return
     return <div className="notes-index">
-        <NoteTxt onAddNote={onAddNote} />
-        {/* <NoteFilter onSetFilter={onSetFilter} /> */}
+        <NoteFilter onSetFilter={onSetFilter} />
+        <NoteAdd onAddNote={onAddNote}/>
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
 
     </div>

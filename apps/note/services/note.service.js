@@ -13,12 +13,12 @@ export const notesService = {
     getDefaultFilter,
 }
 
-function query(filterBy = getDefaultFilter()) {
+function query(filterBy) {
     return asyncStorageService.query(NOTES_KEY)
         .then(notes => {
-            if (filterBy.txt) {
-                const regex = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regex.test(note.title))
+            if (filterBy) {
+                const regex = new RegExp(filterBy, 'i')
+                notes = notes.filter(note => regex.test(note.info.txt))
             }
             return notes
         })
@@ -55,23 +55,9 @@ function _createNotes() {
                 info: {
                     txt: "i am first!"
                 },
-                // backgroundColor:'yellow'
-            },
-            {
-                id: "n104",
-                type: "note-txt",
-                isPinned: false,
-                info: {
-                    txt: "i am second!"
-                }
-            },
-            {
-                id: "n106",
-                type: "note-txt",
-                isPinned: false,
-                info: {
-                    txt: "i am second!"
-                }
+                // style: {
+                //     backgroundColor: "#00d"
+                // }
             },
             {
                 id: "n107",
@@ -82,24 +68,16 @@ function _createNotes() {
                 }
             },
             {
-                id: "n107",
-                type: "note-txt",
-                isPinned: false,
+                id: "n102",
+                type: "note-img",
                 info: {
-                    txt: "i am second!"
-                }
+                    url: "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+                    title: "Bobi and Me"
+                },
+                // style: {
+                //     backgroundColor: "#00d"
+                // }
             },
-            // {
-            //     id: "n102",
-            //     type: "note-img",
-            //     info: {
-            //         url: "http://some-img/me",
-            //         title: "Bobi and Me"
-            //     },
-            //     style: {
-            //         backgroundColor: "#00d"
-            //     }
-            // },
             // {
             //     id: "n103",
             //     type: "note-todos",

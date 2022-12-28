@@ -1,4 +1,4 @@
 
-export function NoteImg() {
-    console.log('node img')
+export function NoteImg({note,onRemoveNote}) {
+    console.log('hi');
 }

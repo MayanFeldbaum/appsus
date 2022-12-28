@@ -2,7 +2,7 @@ import { NoteEditor } from "./note-editor.jsx"
 import { NoteTxt } from "./note-txt.jsx"
 
 export function NotePreview({ note, onRemoveNote }) {
-    // DyncCmp
+    // DyncCmp?
 
     if (note.type==='note-txt') return (<div className="note-preview">
         <span>{note.info.txt}</span>

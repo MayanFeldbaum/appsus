@@ -1,9 +1,12 @@
 .note-preview{
-background-color: rgb(218, 218, 57);
+background-color: rgb(254, 254, 138);
 padding:1rem;
 border-radius: 10px;
-min-height: 150px;    
+min-height: 300px;
+width: 300px;    
 display:flex;
 flex-direction: column;
 justify-content: space-between;
+margin: 1rem auto;
+white-space:pre-wrap;
 }

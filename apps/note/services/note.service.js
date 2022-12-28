@@ -25,18 +25,18 @@ function query(filterBy = getDefaultFilter()) {
 }
 
 function get(noteId) {
-    return storageService.get(NOTES_KEY, noteId)
+    return asyncStorageService.get(NOTES_KEY, noteId)
 }
 
 function remove(noteId) {
-    return storageService.remove(NOTES_KEY, noteId)
+    return asyncStorageService.remove(NOTES_KEY, noteId)
 }
 
 function save(note) {
     if (note.id) {
-        return storageService.put(NOTES_KEY, note)
+        return asyncStorageService.put(NOTES_KEY, note)
     } else {
-        return storageService.post(NOTES_KEY, note)
+        return asyncStorageService.post(NOTES_KEY, note)
     }
 }
 
@@ -54,10 +54,35 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     txt: "i am first!"
-                }
+                },
+                // backgroundColor:'yellow'
             },
             {
                 id: "n104",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "i am second!"
+                }
+            },
+            {
+                id: "n106",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "i am second!"
+                }
+            },
+            {
+                id: "n107",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "i am second!"
+                }
+            },
+            {
+                id: "n107",
                 type: "note-txt",
                 isPinned: false,
                 info: {

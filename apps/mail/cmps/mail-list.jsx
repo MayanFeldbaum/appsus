@@ -6,13 +6,10 @@ export function MailList({ mails }) {
     // Allow viewing the sent emails
 
     return <section className="mail-list">
-        Mail table!
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>I'm thead!</th>
-                </tr>
-            </thead>
+        <header className="mail-list-header">
+            list of Emails!
+        </header>
+        <table border="1" className="mail-table">
             <tbody>
                 {mails.map(mail => <MailPreview key={mail.id} mail={mail} />)}
             </tbody>

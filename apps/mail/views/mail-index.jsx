@@ -8,23 +8,27 @@ import { MailCompose } from '../cmps/mail-compose.jsx'
 import { mailService } from '../services/mail.service.js'
 
 export function MailIndex() {
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [mails, setMails] = useState([])
 
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [filterBy])
 
     function loadMails() {
-        mailService.query()
-            .then(setMails)
+        mailService.query(filterBy)
+            .then(mails => setMails(mails))
+    }
+
+    function onSetFilter(filterByFromFilter) {
+        setFilterBy(filterByFromFilter)
     }
 
     console.log('mails:', mails)
-    return <section className="mail-index">
-        mail app
+    return <section className="mail-index mail-layout">
 
+        <MailFilter onSetFilter={onSetFilter}/>
         <MailList mails={mails} />
-        {/* <MailFilter /> */}
         {/* <MailFolderList />  */}
         {/* navbar */}
         {/* <MailCompose /> */}

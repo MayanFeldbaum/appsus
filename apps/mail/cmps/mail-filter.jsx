@@ -1,6 +1,30 @@
-export function MailFilter() {
+const { useState, useEffect } = React
+
+export function MailFilter({ onSetFilter }) {
     // Filter emails: by search, by read/unread
-    console.log('mail filter')
+    const [filterBy, setFilterBy] = useState('')
+
+    useEffect(() => {
+        onSetFilter(filterBy)
+    }, [filterBy])
+
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        setFilterBy((prevFilter) => {
+            return { ...prevFilter, [field]: value }
+        })
+    }
+
+    return <section className="mail-filter">
+        <form>
+            <input type="text"
+                id="title"
+                name="txt"
+                placeholder="Search"
+                onChange={handleChange}
+            />
+        </form>
+    </section>
 }
 
 // The emailService query function should get a criteria object, here is an idea:

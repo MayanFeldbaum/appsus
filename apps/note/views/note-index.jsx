@@ -46,11 +46,27 @@ export function NoteIndex() {
         })
     }
 
+    function updateNoteStyle(noteId,newStyle){
+        notesService.get(noteId)
+        .then((note)=>{
+            const newNote = {...note, style:{...note.style,...newStyle}}
+            notesService.save(newNote)
+            .then((updatedNote)=>{
+                const updatedNotes = notes.map(note=> {
+                    if (note.id===noteId) return updatedNote
+                    return note
+                })
+                setNotes(updatedNotes)
+
+            })
+        })
+    }
+
     if (!notes) return
     return <div className="notes-index">
         <NoteFilter onSetFilter={onSetFilter} />
         <NoteAdd onAddNote={onAddNote}/>
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} />
 
     </div>
 }

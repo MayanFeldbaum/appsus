@@ -55,9 +55,9 @@ function _createNotes() {
                 info: {
                     txt: "i am first!"
                 },
-                // style: {
-                //     backgroundColor: "#00d"
-                // }
+                style: {
+                    backgroundColor: "#00d"
+                }
             },
             {
                 id: "n107",
@@ -65,6 +65,9 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     txt: "i am second!"
+                },
+                style: {
+                    backgroundColor: "#00d"
                 }
             },
             {
@@ -74,9 +77,9 @@ function _createNotes() {
                     url: "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
                     title: "Bobi and Me"
                 },
-                // style: {
-                //     backgroundColor: "#00d"
-                // }
+                style: {
+                    backgroundColor: "#00d"
+                }
             },
             // {
             //     id: "n103",

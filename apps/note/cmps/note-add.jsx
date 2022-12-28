@@ -20,7 +20,9 @@ export function NoteAdd({ onAddNote }) {
             info:{
                 txt:noteTxt
             },
-            backgroundColor:'yellow'
+            style:{
+                backgroundColor:'yellow'
+            }
         }
         onAddNote(newNoteTxt)
         setNoteTxt('')

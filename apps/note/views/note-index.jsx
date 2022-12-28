@@ -26,6 +26,7 @@ export function NoteIndex() {
     //     setFilterBy(filterByFromFilter)
     // }
 
+    if (!notes) return
     return <div className="notes-index">
         {/* <NoteFilter onSetFilter={onSetFilter} /> */}
         <NoteList notes={notes} />

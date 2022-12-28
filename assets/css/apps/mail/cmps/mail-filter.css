@@ -1,0 +1,8 @@
+.mail-filter {
+    margin-bottom: .5em;
+}
+
+.mail-filter input{
+    background-color: var(--bgc-input-clr);
+}
+

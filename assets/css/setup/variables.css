@@ -3,4 +3,7 @@
     --header-clr: #ffff;
     --font-clr: #001d35;
     --hover-clr: #d9d9d9b7;
+    --border-table-clr: #808080;
+    --bgc-table-clr: #F2F6FC;
+    --bgc-input-clr: rgb(234, 241, 251);
 }

@@ -1,9 +1,8 @@
 import { NotePreview } from "./note-preview.jsx"
 
-
 export function NoteList() {
 
-    return <div>note list
+    return <div className="note-list">
         <NotePreview />
     </div>
 

@@ -1,5 +1,12 @@
-export function MailList() {
+import { MailPreview } from "./mail-preview.jsx"
 
-    return <div>Mail list</div>
+export function MailList() {
+    // Display the unread emails count
+    // Allow sorting the emails by date and by title
+    // Allow viewing the sent emails
+
+    return <div>Mail list
+        <MailPreview />
+    </div>
 
 }

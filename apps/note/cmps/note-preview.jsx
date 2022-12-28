@@ -1,10 +1,11 @@
+import { NoteEditor } from "./note-editor.jsx"
 
-export function NotePreview() {
-    console.log('not preview')
+
+export function NotePreview({note}) {
     // DyncCmp
 
     return <div className="note-preview">
-        <span>Hi i am a note</span>
-        <div className="note-editor">I am the editor</div>
+        <span>{note.info.txt}</span>
+        <NoteEditor />
     </div>
 }

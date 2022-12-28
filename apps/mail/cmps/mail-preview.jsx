@@ -13,13 +13,11 @@ export function MailPreview({mail}) {
             setIsExpanded(!isExpanded)
         }}>
             <td>{subject}</td>
-            <td>{sentAt}</td>
-            <td>
-                <Link to={`/mail/${id}`}>Details</Link> |
-            </td>
         </tr>
         <tr hidden={!isExpanded}>
             <td colSpan="3">
+                <Link to={`/mail/${id}`}>Details</Link>
+                <p>{sentAt}</p>
                 <p>{to}</p>
                 <p>{body}</p>
             </td>

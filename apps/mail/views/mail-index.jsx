@@ -1,7 +1,6 @@
 const { useState, useEffect } = React
 
 import { MailList } from '../cmps/mail-list.jsx'
-import { MailDetails } from './mail-details.jsx'
 import { MailFilter } from '../cmps/mail-filter.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 import { MailCompose } from '../cmps/mail-compose.jsx'
@@ -21,14 +20,14 @@ export function MailIndex() {
     }
 
     console.log('mails:', mails)
-    return <div>
+    return <section className="mail-index">
         mail app
 
         <MailList mails={mails} />
-        <MailDetails />
-        <MailFilter />
-        <MailFolderList /> {/* navbar */}
-        <MailCompose />
-    </div>
+        {/* <MailFilter /> */}
+        {/* <MailFolderList />  */}
+        {/* navbar */}
+        {/* <MailCompose /> */}
+    </section>
 }
 

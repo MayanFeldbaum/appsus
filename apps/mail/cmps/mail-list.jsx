@@ -17,8 +17,6 @@ export function MailList({ mails }) {
                 {mails.map(mail => <MailPreview key={mail.id} mail={mail} />)}
             </tbody>
         </table>
-
-
     </section>
 
 }

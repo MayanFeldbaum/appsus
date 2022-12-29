@@ -11,6 +11,6 @@ export function NoteImg({txt,onAddNote,setNewNoteFalse}) {
             fontFamily: "Arial"
         }
     }
-    onAddNote(newNoteTxt)
+    onAddNote(newImgTxt)
     setNewNoteFalse()
 }

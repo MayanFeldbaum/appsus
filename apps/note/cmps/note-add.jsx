@@ -4,17 +4,17 @@ export function NoteAdd({ onAddNote }) {
 
     const [cmpType, setCmpType] = useState('txt')
     const [noteTxt, setNoteTxt] = useState('')
-    // const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
+    const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
 
-    // useEffect(()=>{
-    //     placeholderInput()
-    // },[cmpType])
+    useEffect(() => {
+        placeholderUpdate()
+    }, [cmpType])
 
-    // function placeholderInput(){
-    //     if (cmpType === 'txt') setPlaceholderInput("Whats on your mind...")
-    //     if (cmpType === 'img') addNoteImg("Enter image URL")
-    //     if (cmpType === 'video') addNoteVideo("Enter video URL")
-    // }
+    function placeholderUpdate() {
+        if (cmpType === 'txt') setPlaceholderInput("Take a note...")
+        if (cmpType === 'img') setPlaceholderInput("Enter image URL")
+        if (cmpType === 'video') setPlaceholderInput("Enter video URL")
+    }
 
     function handleChange({ target }) {
         let { value } = target
@@ -27,10 +27,10 @@ export function NoteAdd({ onAddNote }) {
         if (cmpType === 'txt') addNoteTxt()
         if (cmpType === 'img') addNoteImg()
         if (cmpType === 'video') addNoteVideo()
-        
+
     }
 
-    function addNoteTxt(){
+    function addNoteTxt() {
         const newNoteTxt = {
             type: "note-txt",
             isPinned: false,
@@ -38,7 +38,7 @@ export function NoteAdd({ onAddNote }) {
                 txt: noteTxt,
             },
             style: {
-                backgroundColor: 'yellow',
+                backgroundColor: "#ffff",
                 fontFamily: "Arial"
             }
         }
@@ -46,48 +46,49 @@ export function NoteAdd({ onAddNote }) {
         onAddNote(newNoteTxt)
     }
 
-    function addNoteImg(){
+    function addNoteImg() {
         const newNoteImg = {
             type: "note-img",
             isPinned: false,
             info: {
-                url:noteTxt,
+                url: noteTxt,
                 title: "image"
             },
             style: {
-                backgroundColor: 'yellow',
+                backgroundColor: "#ffff",
                 fontFamily: "Arial"
             }
         }
         onAddNote(newNoteImg)
     }
 
-    function addNoteVideo(){
+    function addNoteVideo() {
         const newNoteVideo = {
             type: "note-video",
             isPinned: false,
             info: {
-                url:noteTxt,
+                url: noteTxt,
                 title: "video"
             },
             style: {
-                backgroundColor: 'yellow',
+                backgroundColor: "#ffff",
                 fontFamily: "Arial"
             }
         }
         onAddNote(newNoteVideo)
     }
 
-    return <div>
-        <ul>
-            <li type='txt' className="far fa-file-alt" onClick={ev => setCmpType(ev.target.type)}></li>
-            <li type='img' className="far fa-file-image" onClick={ev => setCmpType(ev.target.type)}></li>
-            <li type='video' className="fab fa-youtube" onClick={ev => setCmpType(ev.target.type)}></li>
-        </ul>
-        <form onSubmit={onSubmitNote}>
+    return <div className="input-new-note">
+        <form className="input-note-form" onSubmit={onSubmitNote}>
             <input className="text" type="text" id="note-text" name="text"
-                onChange={handleChange} placeholder="Enter Text.."></input>
-            <button>Save</button>
+                onChange={handleChange} placeholder={placeholderInput}>
+            </input>
+            <div className="note-type-icons">
+                <li title ="Text" type='txt' className="far fa-file-alt" onClick={ev => setCmpType(ev.target.type)}></li>
+                <li title ="Image" type='img' className="far fa-file-image" onClick={ev => setCmpType(ev.target.type)}></li>
+                <li title ="Video" type='video' className="fab fa-youtube" onClick={ev => setCmpType(ev.target.type)}></li>
+            </div>
         </form>
+
     </div>
 }

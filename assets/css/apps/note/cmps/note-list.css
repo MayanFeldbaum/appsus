@@ -5,4 +5,6 @@ display: flex;
 flex-wrap: wrap;
 width: 85vw;
 align-items: flex-start;
+padding:none;
+margin:0 auto;
 }

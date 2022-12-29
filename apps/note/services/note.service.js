@@ -59,7 +59,7 @@ function _createNotes() {
                     txt: "i am first!"
                 },
                 style: {
-                    backgroundColor: "yellow",
+                    backgroundColor: "#ffff",
                     fontFamily: "Arial"
                 }
             },
@@ -71,7 +71,7 @@ function _createNotes() {
                     txt: "i am second!"
                 },
                 style: {
-                    backgroundColor: "yellow",
+                    backgroundColor: "#ffff",
                     fontFamily: "Arial"
                 }
             },
@@ -83,7 +83,7 @@ function _createNotes() {
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "yellow",
+                    backgroundColor: "#ffff",
                     fontFamily: "Arial"
                 }
             },

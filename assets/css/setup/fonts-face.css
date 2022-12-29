@@ -1,3 +1,17 @@
+@font-face {
+    font-family: google-sans;
+    src: url(../../fonts/google-sans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: google-sans-medium;
+    src: url(../../fonts/google-sans/OpenSans-Medium.ttf);
+}
+
+@font-face {
+    font-family: google-sans-bold;
+    src: url(../../fonts/google-sans/OpenSans-Bold.ttf);
+}
 
 @font-face {
     font-family: fa-solid;

@@ -1,7 +1,8 @@
 const { useState, useEffect } = React
 
 import { MailList } from '../cmps/mail-list.jsx'
-import { MailFilter } from '../cmps/mail-filter.jsx'
+import { MailFilterRead } from '../cmps/mail-filter-read.jsx'
+import { MailFilterSearch } from '../cmps/mail-filter-search.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 import { MailCompose } from '../cmps/mail-compose.jsx'
 import { MailSort } from '../cmps/mail-sort.jsx'
@@ -17,10 +18,10 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [filterBy])
+    }, [filterBy, sortBy])
 
     function loadMails() {
-        mailService.query(filterBy)
+        mailService.query(filterBy, sortBy)
             .then(mails => setMails(mails))
     }
 
@@ -28,7 +29,7 @@ export function MailIndex() {
         setFilterBy(filterBy)
     }
 
-    function onSetSort() {
+    function onSetSort(sortBy) {
         setSortBy(sortBy)
     }
 
@@ -61,14 +62,25 @@ export function MailIndex() {
     }
 
     return <section className="mail-index mail-layout">
-        <MailFilter onSetFilter={onSetFilter} />
-        <MailSort onSetSort={onSetSort}/>
+        <section className="main-nav">
+            <div className="appsus-nav">
+                <button className="fa-solid fa-bars"></button>
+                <div>Susmail</div>
+            </div>
+            <MailFilterSearch onSetFilter={onSetFilter} />
+        </section>
         <section className="mail-main">
             <div>
                 <MailCompose onAddMail={onAddMail} />
-                <MailFolderList onSetFilter={onSetFilter} numOfUnread={numOfUnread}/>
+                <MailFolderList onSetFilter={onSetFilter} numOfUnread={numOfUnread} />
             </div>
-            <MailList mails={mails} onUpdateMail={onUpdateMail} />
+            <div className="mail-container">
+                <header className="mail-list-header">
+                    <MailFilterRead onSetFilter={onSetFilter} />
+                    <MailSort onSetSort={onSetSort} />
+                </header>
+                <MailList mails={mails} onUpdateMail={onUpdateMail} />
+            </div>
         </section>
     </section>
 }

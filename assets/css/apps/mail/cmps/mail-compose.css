@@ -24,6 +24,7 @@
 }
 
 .btn-mail-compose {
+    font-family: google-sans-medium, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bgc-input-clr);
     display: inline-block;
     padding: 1.5em;

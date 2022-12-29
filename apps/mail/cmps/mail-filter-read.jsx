@@ -2,7 +2,7 @@ const { useState, useEffect } = React
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailFilter({ onSetFilter }) {
+export function MailFilterRead({ onSetFilter }) {
     // Filter emails: by search, by read/unread
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
@@ -17,17 +17,10 @@ export function MailFilter({ onSetFilter }) {
         })
     }
 
-    return <section className="mail-filter">
+    return <section className="mail-filter-read">
         <form>
-            <input type="text"
-                id="title"
-                name="txt"
-                placeholder="Search"
-                onChange={handleChange}
-            />
-
             <select name="isRead" onChange={handleChange}>
-                <option value="all">All</option>
+                <option value="all">All emails</option>
                 <option value="read">Read emails</option>
                 <option value="unread">Unread emails</option>
             </select>

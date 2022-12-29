@@ -38,6 +38,13 @@ function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
             } else if (filterBy.status === 'draft') {
 
             }
+
+            if (sortBy['sort-by'] === 'date') {
+                mails.sort((a, b) => b.sentAt - a.sentAt)
+            } else if (sortBy['sort-by'] === 'subject') {
+                mails.sort((a, b) => a.subject.localeCompare(b.subject))
+            }
+
             return mails
         })
 }
@@ -77,7 +84,7 @@ function getDefaultFilter() {
 }
 
 function getDefaultSort() {
-    return {subject: '', date: null}
+    return { 'sort-by': '' }
 }
 
 const criteria = {

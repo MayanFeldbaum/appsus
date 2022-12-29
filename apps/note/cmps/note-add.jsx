@@ -1,113 +1,93 @@
 const { useState, useEffect } = React
 
-import {NoteTxt} from '../cmps/note-txt.jsx'
-
-export function NoteAdd({ onGetTxtCmp,onAddNote }) {
+export function NoteAdd({ onAddNote }) {
 
     const [cmpType, setCmpType] = useState('txt')
     const [noteTxt, setNoteTxt] = useState('')
-    const [newNote, setNewNote] = useState(false)
+    // const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
+
+    // useEffect(()=>{
+    //     placeholderInput()
+    // },[cmpType])
+
+    // function placeholderInput(){
+    //     if (cmpType === 'txt') setPlaceholderInput("Whats on your mind...")
+    //     if (cmpType === 'img') addNoteImg("Enter image URL")
+    //     if (cmpType === 'video') addNoteVideo("Enter video URL")
+    // }
 
     function handleChange({ target }) {
         let { value } = target
         setNoteTxt(value)
     }
 
-    function saveByType(ev) {
+    function onSubmitNote(ev) {
         ev.preventDefault()
-        onGetTxtCmp(noteTxt,cmpType)   
-        setNewNote(true)            
-        // switch (cmpType) {
-        //     case 'txt':
-        //         return <h1>hello</h1>
-                // return <NoteTxt/>
-            // return <NoteTxt {...props} />
-            // case 'img':
-            // return <NoteVideo {...props} />
-            // case 'video':
-            // return <NoteImg {...props}/>
-        // }
-        // onAddNote(ev.target.value)
-        // setNoteTxt('')
+
+        if (cmpType === 'txt') addNoteTxt()
+        if (cmpType === 'img') addNoteImg()
+        if (cmpType === 'video') addNoteVideo()
+        
     }
 
-    function setNewNoteFalse(){
-        setNewNote(false)
-    }
-
-    return <div>
-        <ul>
-            <li type='txt' className="far fa-file-alt" onClick={ev => setCmpType(ev.target.type)}></li>
-        </ul>
-        <form onSubmit={saveByType}>
-            <input class="text" type="text" id="note-text" name="text" value={noteTxt}
-                onChange={handleChange} placeholder="What's on your mind..."></input>
-            <button>Save</button>
-        </form>
-        {(newNote&&cmpType==='txt')&& <NoteTxt txt={noteTxt} onAddNote={onAddNote} setNewNoteFalse={setNewNoteFalse}/>}
-        {(newNote&&cmpType==='img')&& <NoteImg txt={noteTxt} onAddNote={onAddNote} setNewNoteFalse={setNewNoteFalse}/>}
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-{/* //     const [noteTxt, setNoteTxt] = useState('')
-
-//     function handleChange({ target }) {
-        let { value } = target
-        setNoteTxt(value)
-    }
-
-//     function onSaveReview(ev) {
-        ev.preventDefault()
+    function addNoteTxt(){
         const newNoteTxt = {
             type: "note-txt",
             isPinned: false,
             info: {
-                txt: noteTxt
+                txt: noteTxt,
             },
             style: {
                 backgroundColor: 'yellow',
                 fontFamily: "Arial"
             }
         }
-        onAddNote(newNoteTxt)
         setNoteTxt('')
+        onAddNote(newNoteTxt)
     }
 
-    return <form onSubmit={onSaveReview}>
-        <div className='note-preview new'>
-            <textarea
-                cols="30"
-                rows="10"
-                placeholder='Type to add a note..'
-                value={noteTxt}
-                onChange={handleChange}
-            >
-            </textarea>
+    function addNoteImg(){
+        const newNoteImg = {
+            type: "note-img",
+            isPinned: false,
+            info: {
+                url:noteTxt,
+                title: "image"
+            },
+            style: {
+                backgroundColor: 'yellow',
+                fontFamily: "Arial"
+            }
+        }
+        onAddNote(newNoteImg)
+    }
+
+    function addNoteVideo(){
+        const newNoteVideo = {
+            type: "note-video",
+            isPinned: false,
+            info: {
+                url:noteTxt,
+                title: "video"
+            },
+            style: {
+                backgroundColor: 'yellow',
+                fontFamily: "Arial"
+            }
+        }
+        onAddNote(newNoteVideo)
+    }
+
+    return <div>
+        <ul>
+            <li type='txt' className="far fa-file-alt" onClick={ev => setCmpType(ev.target.type)}></li>
+            <li type='img' className="far fa-file-image" onClick={ev => setCmpType(ev.target.type)}></li>
+            <li type='video' className="fab fa-youtube" onClick={ev => setCmpType(ev.target.type)}></li>
+        </ul>
+        <form onSubmit={onSubmitNote}>
+            <input className="text" type="text" id="note-text" name="text"
+                onChange={handleChange} placeholder="Enter Text.."></input>
             <button>Save</button>
-        </div>
-    </form>
-} */}
+        </form>
+    </div>
+}

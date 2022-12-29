@@ -16,9 +16,12 @@ export const notesService = {
 function query(filterBy) {
     return asyncStorageService.query(NOTES_KEY)
         .then(notes => {
-            if (filterBy) {
-                const regex = new RegExp(filterBy, 'i')
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
                 notes = notes.filter(note => regex.test(note.info.txt))
+            }
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type ===filterBy.type)
             }
             return notes
         })
@@ -41,7 +44,7 @@ function save(note) {
 }
 
 function getDefaultFilter() {
-    return { txt: ''}
+    return { txt: '', type:''}
 }
 
 function _createNotes() {
@@ -56,7 +59,7 @@ function _createNotes() {
                     txt: "i am first!"
                 },
                 style: {
-                    backgroundColor: "#00d",
+                    backgroundColor: "yellow",
                     fontFamily: "Arial"
                 }
             },
@@ -68,7 +71,7 @@ function _createNotes() {
                     txt: "i am second!"
                 },
                 style: {
-                    backgroundColor: "#00d",
+                    backgroundColor: "yellow",
                     fontFamily: "Arial"
                 }
             },
@@ -76,11 +79,11 @@ function _createNotes() {
                 id: "n102",
                 type: "note-img",
                 info: {
-                    url: "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+                    url: "https://images.unsplash.com/photo-1463947628408-f8581a2f4aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#00d",
+                    backgroundColor: "yellow",
                     fontFamily: "Arial"
                 }
             },

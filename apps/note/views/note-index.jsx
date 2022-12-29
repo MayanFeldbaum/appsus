@@ -2,19 +2,13 @@ const { useState, useEffect } = React
 
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
-// import { NoteTxt } from '../cmps/note-txt.jsx'
 import { NoteAdd } from '../cmps/note-add.jsx'
 
-
 import { notesService } from '../services/note.service.js'
-import { NoteTxt } from "../cmps/note-txt.jsx"
-
-// Allow removing an email
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
-    // const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter())
     const [filterBy, setFilterBy] = useState('')
 
     useEffect(() => {
@@ -37,6 +31,22 @@ export function NoteIndex() {
                 setNotes(updatedNotes)
                 // flashMsg('Note removed!')
             })
+    }
+
+    function onUpdateNoteTxt(noteId,newTxt) {
+        console.log(noteId,newTxt);
+        // notesService.get(noteId)
+        // .then((note) => {
+        //     const newNote = { ...note, info: { ...note.info, ...newTxt } }
+        //     notesService.save(newNote)
+        //         .then((updatedNote) => {
+        //             const updatedNotes = notes.map(note => {
+        //                 if (note.id === noteId) return updatedNote
+        //                 return note
+        //             })
+        //             setNotes(updatedNotes)
+        //         })
+        // })
     }
 
     function onAddNote(newNote) {
@@ -64,16 +74,10 @@ export function NoteIndex() {
             })
     }
 
-    function onGetTxtCmp(txt, cmpType) {
-        console.log(txt, cmpType)
-    }
-
     if (!notes) return
     return <div className="notes-index">
         <NoteFilter onSetFilter={onSetFilter} />
-        <NoteAdd onGetTxtCmp={onGetTxtCmp} onAddNote={onAddNote} />
-        {/* <NoteAdd onAddNote={onAddNote}/> */}
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} />
-
+        <NoteAdd onAddNote={onAddNote} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} />
     </div>
 }

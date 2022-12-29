@@ -1,6 +1,7 @@
 .mail-folder-list {
     width: 100%;
     flex: 1;
+    margin-right: 1em;
 }
 
 .mail-folder-list button {
@@ -11,10 +12,14 @@
     font-weight: 700;
     border-top-right-radius: 50em;
     border-bottom-right-radius: 50em;
-    width: 90%;
+    width: 200px;
     text-align: left;
 }
 
 .mail-folder-list button.active {
     background-color: var(--bgc-input-clr);
+}
+
+.mail-folder-list span {
+    margin-right: .5em;
 }

@@ -17,14 +17,26 @@ export function MailFolderList({ onSetFilter }) {
     }
 
     return <section className="mail-folder-list">
-        <button className="active" name="status" value="inbox"
-            onClick={handleChange}>inbox</button>
+        <button className="active " name="status" value="inbox"
+            onClick={handleChange}>
+            <span className="fa-solid fa-inbox"></span>
+            inbox
+        </button>
         <button name="status" value="sent"
-            onClick={handleChange}>sent</button>
-        <button name="status" value="trash"
-            onClick={handleChange}>trash</button>
+            onClick={handleChange}>
+            <span className="fa-regular fa-envelope"></span>
+            sent
+        </button>
+        {/* <button name="status" value="trash"
+            onClick={handleChange}>
+            <span className="fa-regular fa-trash-can"></span>
+            trash
+        </button>
         <button name="status" value="draft"
-            onClick={handleChange}>draft</button>
+            onClick={handleChange}>
+            <span className="fa-regular fa-file"></span>
+            draft
+        </button> */}
     </section>
     // Allow viewing the sent emails
     // In the inbox show all the emails that were sent to the current user, the other

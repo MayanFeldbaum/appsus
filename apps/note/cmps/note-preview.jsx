@@ -26,8 +26,7 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle }) {
     </div>
     )
 
-    if (note.type === 'note-img')
-        return (<div className="note-preview">
+    if (note.type === 'note-img') return (<div className="note-preview" style={{ backgroundColor: 'yellow' ,fontFamily: note.style.fontFamily}}>
             <span>{note.info.txt}</span>
             <img src={note.info.url} />
             <div>

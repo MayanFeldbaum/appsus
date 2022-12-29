@@ -4,12 +4,11 @@ import { NoteTxt } from "./note-txt.jsx"
 export function NotePreview({ note, onRemoveNote, updateNoteStyle }) {
     // DyncCmp?
 
-    if (note.type === 'note-txt') return (<div className="note-preview" style={{ backgroundColor: note.style.backgroundColor ,fontFamily: note.style.fontFamily}}>
+    if (note.type === 'note-txt') return (<div className="note-preview" style={{ backgroundColor: 'yellow' ,fontFamily: note.style.fontFamily}}>
         {/* <span>{note.info.txt}</span> */}
         <textarea cols="30"
                 rows="10"
                 value={note.info.txt}>
-
         </textarea>
         <div>
             <NoteEditor />

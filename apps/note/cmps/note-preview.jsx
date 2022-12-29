@@ -13,6 +13,7 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
     }
 
     function TodosList() {
+        //list!
         const title = note.info.title
         const todos = note.info.todos
         const todosList = todos.map(todo => todo)

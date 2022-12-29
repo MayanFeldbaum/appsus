@@ -33,24 +33,7 @@ export function NoteIndex() {
             })
     }
 
-    function onUpdateNoteTxt(noteId,newTxt) {
-        console.log(noteId,newTxt);
-        // notesService.get(noteId)
-        // .then((note) => {
-        //     const newNote = { ...note, info: { ...note.info, ...newTxt } }
-        //     notesService.save(newNote)
-        //         .then((updatedNote) => {
-        //             const updatedNotes = notes.map(note => {
-        //                 if (note.id === noteId) return updatedNote
-        //                 return note
-        //             })
-        //             setNotes(updatedNotes)
-        //         })
-        // })
-    }
-
     function onAddNote(newNote) {
-        console.log(newNote);
         notesService.save(newNote)
             .then((newNote) => {
                 const newNotes = [...notes, newNote]
@@ -69,15 +52,35 @@ export function NoteIndex() {
                             return note
                         })
                         setNotes(updatedNotes)
-
                     })
             })
+    }
+
+    function onUpdateNoteTxt(noteId, newTxt) {
+        notesService.get(noteId)
+            .then((note) => {
+                const newNote = { ...note, info: { ...note.info, ...newTxt } }
+                notesService.save(newNote)
+                    .then((updatedNote) => {
+                        const updatedNotes = notes.map(note => {
+                            if (note.id === noteId) return updatedNote
+                            return note
+                        })
+                        setNotes(updatedNotes)
+                    })
+            })
+    }
+
+    function onDuplicateNote(noteToDuplicate){
+        const cloneNote ={...noteToDuplicate}
+        delete cloneNote.id
+        onAddNote(cloneNote)
     }
 
     if (!notes) return
     return <div className="notes-index">
         <NoteFilter onSetFilter={onSetFilter} />
         <NoteAdd onAddNote={onAddNote} />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} />
     </div>
 }

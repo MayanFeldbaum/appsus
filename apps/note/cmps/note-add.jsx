@@ -14,6 +14,7 @@ export function NoteAdd({ onAddNote }) {
         if (cmpType === 'txt') setPlaceholderInput("Take a note...")
         if (cmpType === 'img') setPlaceholderInput("Enter image URL")
         if (cmpType === 'video') setPlaceholderInput("Enter video URL")
+        if (cmpType === 'list') setPlaceholderInput("Enter comma separated list")
     }
 
     function handleChange({ target }) {
@@ -27,7 +28,15 @@ export function NoteAdd({ onAddNote }) {
         if (cmpType === 'txt') addNoteTxt()
         if (cmpType === 'img') addNoteImg()
         if (cmpType === 'video') addNoteVideo()
+        if (cmpType === 'list') addNoteTodos()
+    }
 
+        function getURL() {
+        const noteUrl = noteTxt
+        const newUrl = noteUrl.split('=').slice(-1)[0]
+        const finalURL= `https://www.youtube.com/embed/${newUrl}`
+        console.log(finalURL);
+        return finalURL
     }
 
     function addNoteTxt() {
@@ -42,7 +51,6 @@ export function NoteAdd({ onAddNote }) {
                 fontFamily: "Arial"
             }
         }
-        setNoteTxt('')
         onAddNote(newNoteTxt)
     }
 
@@ -67,7 +75,7 @@ export function NoteAdd({ onAddNote }) {
             type: "note-video",
             isPinned: false,
             info: {
-                url: noteTxt,
+                url: getURL(),
                 title: "video"
             },
             style: {
@@ -78,6 +86,34 @@ export function NoteAdd({ onAddNote }) {
         onAddNote(newNoteVideo)
     }
 
+    function addNoteTodos(){
+        const newNoteTodos = {
+            type: "note-todos",
+            isPinned: false,
+            info: {
+                title: getTodosTitle(),
+            todos:getTodosTxt()
+            },
+            style: {
+                backgroundColor: "#ffff",
+                fontFamily: "Arial"
+            }
+        }
+        onAddNote(newNoteTodos)
+    }
+
+    function getTodosTitle(){
+       const splitTxt= noteTxt.split(',') 
+       const title= splitTxt[0]
+       return title
+    }
+
+    function getTodosTxt(){
+        const splitTxt= noteTxt.split(',') 
+        const title= splitTxt.shift()
+        return splitTxt
+     }
+
     return <div className="input-new-note">
         <form className="input-note-form" onSubmit={onSubmitNote}>
             <input className="text" type="text" id="note-text" name="text"
@@ -87,6 +123,7 @@ export function NoteAdd({ onAddNote }) {
                 <li title ="Text" type='txt' className="far fa-file-alt" onClick={ev => setCmpType(ev.target.type)}></li>
                 <li title ="Image" type='img' className="far fa-file-image" onClick={ev => setCmpType(ev.target.type)}></li>
                 <li title ="Video" type='video' className="fab fa-youtube" onClick={ev => setCmpType(ev.target.type)}></li>
+                <li title ="List" type='list' className="fa solid fa-list" onClick={ev => setCmpType(ev.target.type)}></li>
             </div>
         </form>
 

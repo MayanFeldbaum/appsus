@@ -1,4 +1,16 @@
+export function NoteImg({txt,onAddNote,setNewNoteFalse}) {
 
-export function NoteImg({note,onRemoveNote}) {
-    console.log('hi');
+    const newImgTxt = {
+        type: "note-img",
+        isPinned: false,
+        info: {
+            url:txt,
+        },
+        style: {
+            backgroundColor: 'yellow',
+            fontFamily: "Arial"
+        }
+    }
+    onAddNote(newNoteTxt)
+    setNewNoteFalse()
 }

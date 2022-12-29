@@ -7,6 +7,7 @@ import { NoteAdd } from '../cmps/note-add.jsx'
 
 
 import { notesService } from '../services/note.service.js'
+import { NoteTxt } from "../cmps/note-txt.jsx"
 
 // Allow removing an email
 
@@ -28,7 +29,7 @@ export function NoteIndex() {
     function onSetFilter(filterByFromFilter) {
         setFilterBy(filterByFromFilter)
     }
-    
+
     function onRemoveNote(noteId) {
         notesService.remove(noteId)
             .then(() => {
@@ -39,33 +40,39 @@ export function NoteIndex() {
     }
 
     function onAddNote(newNote) {
+        console.log(newNote);
         notesService.save(newNote)
-        .then((newNote)=>{
-            const newNotes =[...notes,newNote]
-            setNotes(newNotes)
-        })
+            .then((newNote) => {
+                const newNotes = [...notes, newNote]
+                setNotes(newNotes)
+            })
     }
 
-    function updateNoteStyle(noteId,newStyle){
+    function updateNoteStyle(noteId, newStyle) {
         notesService.get(noteId)
-        .then((note)=>{
-            const newNote = {...note, style:{...note.style,...newStyle}}
-            notesService.save(newNote)
-            .then((updatedNote)=>{
-                const updatedNotes = notes.map(note=> {
-                    if (note.id===noteId) return updatedNote
-                    return note
-                })
-                setNotes(updatedNotes)
+            .then((note) => {
+                const newNote = { ...note, style: { ...note.style, ...newStyle } }
+                notesService.save(newNote)
+                    .then((updatedNote) => {
+                        const updatedNotes = notes.map(note => {
+                            if (note.id === noteId) return updatedNote
+                            return note
+                        })
+                        setNotes(updatedNotes)
 
+                    })
             })
-        })
+    }
+
+    function onGetTxtCmp(txt, cmpType) {
+        console.log(txt, cmpType)
     }
 
     if (!notes) return
     return <div className="notes-index">
         <NoteFilter onSetFilter={onSetFilter} />
-        <NoteAdd onAddNote={onAddNote}/>
+        <NoteAdd onGetTxtCmp={onGetTxtCmp} onAddNote={onAddNote} />
+        {/* <NoteAdd onAddNote={onAddNote}/> */}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} />
 
     </div>

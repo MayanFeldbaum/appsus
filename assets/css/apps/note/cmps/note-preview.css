@@ -11,7 +11,15 @@ margin: 1rem auto;
 white-space:pre-wrap;
 }
 
-button.color-btn, .input-color{
-    background-color: none;
+button.color-btn, .remove-note-btn{
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+.input-color{
     border: none;
+    opacity: 0;
+    position: absolute;
+    cursor: pointer
 }

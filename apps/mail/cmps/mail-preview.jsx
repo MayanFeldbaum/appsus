@@ -9,20 +9,10 @@ export function MailPreview({ mail }) {
     // Click on an email-preview – opens the email for reading
     // Show a read/unread state per email
     const [isExpanded, setIsExpanded] = useState(false)
-    const [mailOpen, setMailOpen] = useState(mail)
+    const [mailRead, setMailRead] = useState(mail)
 
-    // ! need to render one more time - think!
-    useEffect(() => {
-        onSaveMail()
-    }, [mailOpen])
-
-    function onOpenMail() {
-        setMailOpen(prevMail => ({ ...prevMail, isRead: true }))
-    }
-
-    function onSaveMail() {
-        mailService.save(mailOpen)
-        .then(mail => setMailOpen(mail))
+    function onReadMail() {
+        setMailRead(prevMail => ({ ...prevMail, isRead: true }))
     }
 
     const { id, subject, body, sentAt, from, to, isRead } = mail
@@ -30,10 +20,11 @@ export function MailPreview({ mail }) {
     return <Fragment>
         <tr className={readDisplay} onClick={() => {
             setIsExpanded(!isExpanded)
-            onOpenMail()
+            onReadMail()
         }}>
             <td>{from}</td>
             <LongTxt txt={subject} length={length = 50} />
+            {/* <td className="fa-solid fa-trash-can"></td> */}
             <td>{sentAt}</td>
         </tr>
         <tr hidden={!isExpanded}>

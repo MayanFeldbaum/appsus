@@ -41,3 +41,13 @@ select {
     border: none;
     border-radius: .5em;
 }
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: var(--hover-clr);
+}

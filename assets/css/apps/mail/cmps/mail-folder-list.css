@@ -1,5 +1,20 @@
 .mail-folder-list {
-    background-color: red;
+    width: 100%;
     flex: 1;
-    padding: 1em;
+}
+
+.mail-folder-list button {
+    display: block;
+    padding: .9em;
+    padding-left: .9em;
+    padding-right: 1.85em;
+    font-weight: 700;
+    border-top-right-radius: 50em;
+    border-bottom-right-radius: 50em;
+    width: 90%;
+    text-align: left;
+}
+
+.mail-folder-list button.active {
+    background-color: var(--bgc-input-clr);
 }

@@ -29,6 +29,16 @@ function query(filterBy = getDefaultFilter()) {
                     mails = mails.filter(mail => !mail.isRead)
                 }
             }
+
+            // if (filterBy.status === 'inbox') {
+
+            // } else if (filterBy.status === 'sent') {
+
+            // } else if (filterBy.status === 'trash') {
+
+            // } else if (filterBy.status === 'draft') {
+
+            // }
             return mails
         })
 }
@@ -56,9 +66,9 @@ function getEmptyMail(subject = '', body = '', sentAt = '', from = '', to = '') 
         subject,
         body,
         isRead: utilService.getRandomIntInclusive(0, 1) > 0.4 ? true : false,
-        sentAt,
+        sentAt: Date.now(),
         removeAt: null,
-        from,
+        from: getLoggedUser().email,
         to
     }
 }
@@ -102,7 +112,10 @@ function _createMail(subject, body, sentAt, from, to) {
 //     to: 'momo@momo.com'
 // }
 
-const loggedinUser = {
-    email: 'user@appsus.com', fullname: 'Mahatma Appsus'
+function getLoggedUser() {
+    return {
+        email: 'user@appsus.com', fullname: 'Mahatma Appsus'
+    }
 }
+
 

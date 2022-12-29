@@ -9,10 +9,15 @@
     src: url(../../fonts/font-awesome/fa-regular-400.ttf);
 }
 
-.fa-solid:after {
-    font-family: fa;
+/* .fa-solid:after {
+    font-family: fa-solid;
     color: var(--clr-font);
 }
+
+.fa-regular:after {
+    font-family: fa-regular;
+    color: var(--clr-font);
+} */
 
 .fa-solid.glass:after {
     content: "\f002";

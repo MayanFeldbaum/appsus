@@ -1,18 +1,42 @@
 .mail-compose {
-    width: 500px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
+    position: fixed;
+    background-color: var(--header-clr);
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    bottom: 0px;
+    left: 4em;
+    padding: 1em;
 }
 
 .mail-compose input {
     display: block;
+    padding: .5em 0;
+    border-radius: 0;
+    width: 100%;
 }
 
 .mail-compose-header {
-    border-top-left-radius: .5em;
-    border-top-right-radius: .5em;
     display: flex;
     justify-content: space-between;
+}
+
+.btn-mail-compose {
+    background-color: var(--bgc-input-clr);
+    display: block;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.btn-mail-compose:hover {
+    background-color: var(--bgc-input-clr);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.mail-compose textarea {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    border: none;
 }

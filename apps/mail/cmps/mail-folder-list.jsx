@@ -1,12 +1,30 @@
-export function MailFolderList() {
-    console.log('mail folder list')
+const { useEffect, useState } = React
 
+import { mailService } from "../services/mail.service.js"
+
+export function MailFolderList({ onSetFilter }) {
+    const [filterByFolder, setFilterByFolder] = useState(mailService.getDefaultFilter())
+
+    useEffect(() => {
+        onSetFilter(filterByFolder)
+    }, [filterByFolder])
+
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        setFilterByFolder((prevFilter) => {
+            return { ...prevFilter, [field]: value }
+        })
+    }
 
     return <section className="mail-folder-list">
-        <div>inbox</div>
-        <div>sent</div>
-        <div>trash</div>
-        <div>draft</div>
+        <button className="active" name="status" value="inbox"
+            onClick={handleChange}>inbox</button>
+        <button name="status" value="sent"
+            onClick={handleChange}>sent</button>
+        <button name="status" value="trash"
+            onClick={handleChange}>trash</button>
+        <button name="status" value="draft"
+            onClick={handleChange}>draft</button>
     </section>
     // Allow viewing the sent emails
     // In the inbox show all the emails that were sent to the current user, the other

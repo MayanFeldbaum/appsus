@@ -15,5 +15,4 @@ export function MailList({ mails }) {
             </tbody>
         </table>
     </section>
-
 }

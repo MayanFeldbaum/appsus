@@ -11,10 +11,11 @@ export const mailService = {
     remove,
     save,
     getDefaultFilter,
-    getEmptyMail
+    getEmptyMail,
+    getDefaultSort
 }
 
-function query(filterBy = getDefaultFilter()) {
+function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
             if (filterBy.txt) {
@@ -30,15 +31,13 @@ function query(filterBy = getDefaultFilter()) {
                 }
             }
 
-            // if (filterBy.status === 'inbox') {
+            if (filterBy.status === 'sent') {
+                mails = mails.filter(mail => mail.from === getLoggedUser().email)
+            } else if (filterBy.status === 'trash') {
 
-            // } else if (filterBy.status === 'sent') {
+            } else if (filterBy.status === 'draft') {
 
-            // } else if (filterBy.status === 'trash') {
-
-            // } else if (filterBy.status === 'draft') {
-
-            // }
+            }
             return mails
         })
 }
@@ -60,21 +59,25 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(subject = '', body = '', sentAt = '', from = '', to = '') {
+function getEmptyMail(subject = '', body = '', sentAt = Date.now(), from = getLoggedUser().email, to = '') {
     return {
         id: '',
         subject,
         body,
         isRead: utilService.getRandomIntInclusive(0, 1) > 0.4 ? true : false,
-        sentAt: Date.now(),
+        sentAt,
         removeAt: null,
-        from: getLoggedUser().email,
+        from,
         to
     }
 }
 
 function getDefaultFilter() {
     return { status: '', txt: '', isRead: false, isStared: true, lables: [] }
+}
+
+function getDefaultSort() {
+    return {subject: '', date: null}
 }
 
 const criteria = {
@@ -90,8 +93,8 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = []
         mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, 'momo@momo.com', 'github@github.com'))
-        mails.push(_createMail('Welcome to GitHub', 'You`re the newest member in this community of over 94 million people who use GitHub to host and review code, manage projects, and build software', 1672217852, 'github@github.com', 'momo@momo.com'))
-        mails.push(_createMail('Work in Slack with people outside your company', 'Slack Connect is a secure way to communicate with the external people and partners you invite to your Slack instance, and it works just like regular Slack.', 1671651252, 'momo@momo.com', 'slackhq@mail.com'))
+        mails.push(_createMail('Welcome to GitHub', 'You`re the newest member in this community of over 94 million people who use GitHub to host and review code, manage projects, and build software', 1669729703000, 'github@github.com', 'momo@momo.com'))
+        mails.push(_createMail('Work in Slack with people outside your company', 'Slack Connect is a secure way to communicate with the external people and partners you invite to your Slack instance, and it works just like regular Slack.', 1659732506000, 'momo@momo.com', 'slackhq@mail.com'))
         console.log('mails:', mails)
         storageService.saveToStorage(MAIL_KEY, mails)
     }

@@ -18,24 +18,34 @@
     width: 100%;
 }
 
-.mail-table td {
-    padding: .714em;
+.mail-sort {
+    background-color: red;
 }
 
-.mail-table tr {
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+
+
+/* .mail-folder-list {
+    width: 100%;
+    flex: 1;
+    margin-right: 1em;
 }
 
-.mail-table tr:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+.mail-folder-list button {
+    display: block;
+    padding: .9em;
+    padding-left: .9em;
+    padding-right: 1.85em;
+    font-weight: 700;
+    border-top-right-radius: 50em;
+    border-bottom-right-radius: 50em;
+    width: 200px;
+    text-align: left;
 }
 
-.unread {
-    background-color: var(--header-clr);
-    border-bottom: rgba(17, 17, 26, 0.1);
+.mail-folder-list button.active {
+    background-color: var(--bgc-input-clr);
 }
 
-td.fa-solid {
-    background-color: transparent;
-    border: none;
-}
+.mail-folder-list span {
+    margin-right: .5em;
+} */

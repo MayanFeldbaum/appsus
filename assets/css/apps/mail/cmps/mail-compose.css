@@ -25,9 +25,11 @@
 
 .btn-mail-compose {
     background-color: var(--bgc-input-clr);
-    display: block;
-    padding: 2em;
+    display: inline-block;
+    padding: 1.5em;
     border-radius: 1em;
+    margin-bottom: 1em;
+    margin-left: .5em;
 }
 
 .btn-mail-compose:hover {

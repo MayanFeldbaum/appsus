@@ -6,7 +6,13 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    formatTime, 
+    getFormattedTime
 }
+
+const SECOND = 1000
+const MINUTE = SECOND * 60
+const HOUR = MINUTE * 60
 
 function makeId(length = 6) {
     var txt = ''
@@ -59,4 +65,40 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+function getMonthNameShortFormat(date) {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+    ]
+    return monthNames[date.getMonth()]
+}
+
+function formatTime(time) {
+    // console.log('time', time)
+    const now = Date.now();
+    const diff = now - time
+    // console.log('diff', diff)
+
+    if (diff < MINUTE) return 'Just now'
+    if (diff < MINUTE * 5) return 'A few minutes ago'
+    if (diff < HOUR * 24) return 'Today'
+    if (diff < HOUR * 24 * 2) return 'Yesterday'
+
+    return getShortFormattedTime(time)
+}
+
+function getFormattedTime(time) {
+    const d = new Date(time)
+    return `At ${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} 
+    time: ${d.getHours()}:${d.getMinutes()}`
+}
+
+function getShortFormattedTime(time) {
+    const d = new Date(time)
+    if(d.getFullYear() === new Date().getFullYear()) {
+        return `${d.getDate()} ${getMonthNameShortFormat(d)}`
+    } else {
+        return `${d.getDate()} ${getMonthNameShortFormat(d)} ${d.getFullYear()}`
+    }
 }

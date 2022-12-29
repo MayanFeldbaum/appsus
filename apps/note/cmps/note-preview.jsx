@@ -10,8 +10,6 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
         let { value } = target
         setNoteTxt(value)
         onUpdateNoteTxt(note.id, { txt: noteTxt })
-        setNoteTxt('')
-
     }
 
     if (note.type === 'note-txt') return (<div className="note-preview" style={{ backgroundColor: note.style.backgroundColor, fontFamily: note.style.fontFamily }}>

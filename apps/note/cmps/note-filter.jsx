@@ -30,13 +30,13 @@ export function NoteFilter({ onSetFilter }) {
             />
         </div>
         <div className="filterByType">
-            {/* <select name="type" onChange={handleChange}>
+            <select name="type" onChange={handleChange}>
                 <option value=''>All</option>
                 <option value='note-txt'>Text</option>
                 <option value='note-img'>Image</option>
                 <option value='note-video'>Video</option>
                 <option value='note-todos'>Todos</option>
-            </select> */}
+            </select>
         </div>
     </section>
 

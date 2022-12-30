@@ -2,3 +2,7 @@
     background-color: var(--bgc-input-clr);
     width: 100%;
 }
+
+.note-filter-search {
+display: flex;
+}

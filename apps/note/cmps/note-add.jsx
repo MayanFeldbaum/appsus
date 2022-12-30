@@ -138,7 +138,6 @@ export function NoteAdd({ onAddNote }) {
             </input>
             <div className="note-type-icons">
                 {addNotesBtns.map(btn=> { return <li title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}
-    
             </div>
         </form>
     </div>

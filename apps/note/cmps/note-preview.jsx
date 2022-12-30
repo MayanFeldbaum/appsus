@@ -1,9 +1,9 @@
-const { useState, useEffect } = React
+const { useState} = React
 
 import { NoteEditor } from "./note-editor.jsx"
 
 export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteTxt, onDuplicateNote,onUpdateNoteTodos,onTogglePin}) {
-console.log(note);
+
     const [noteTxt, setNoteTxt] = useState(note.info.txt)
     const [todos, setTodos] = useState(note.info.todos)
 
@@ -26,7 +26,6 @@ console.log(note);
             {todos.map((todo, index) => <li><textarea onInput={event => handleListChange(event,index)} value={todo} /></li>)}
         </ul>
     }
-
 
     if (note.type === 'note-txt') return (<div className="note-preview" style={{ backgroundColor: note.style.backgroundColor, fontFamily: note.style.fontFamily }}>
         <textarea value={noteTxt} className="edit-note-text" type="text" id="note-text" name="text"
@@ -54,7 +53,6 @@ console.log(note);
             onChange={handleChange}>
         </textarea> */}
             <TodosList todos={todos} />
-            <NoteEditor note={note} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onDuplicateNote={onDuplicateNote} onTogglePin={onTogglePin} />
-        </div>
+            <NoteEditor note={note} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onDuplicateNote={onDuplicateNote} onTogglePin={onTogglePin} /></div>
     )
 }

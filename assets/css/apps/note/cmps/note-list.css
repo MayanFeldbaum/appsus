@@ -1,4 +1,4 @@
-.note-list{
+.note-list-pinned{
 column-count:3;
 column-gap:5%;
 display: flex;
@@ -8,3 +8,14 @@ align-items: flex-start;
 padding:none;
 margin:0 auto;
 }
+
+.note-list-unpinned{
+    column-count:3;
+    column-gap:5%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 85vw;
+    align-items: flex-start;
+    padding:none;
+    margin:0 auto;
+    }

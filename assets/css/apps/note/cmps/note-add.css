@@ -38,3 +38,8 @@ background-color: blue;
     cursor: pointer;
 }
 
+.active{
+    color: red;
+    background-color: aqua;
+}
+

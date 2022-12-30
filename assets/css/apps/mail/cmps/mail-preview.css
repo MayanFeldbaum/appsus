@@ -13,7 +13,7 @@
 }
 
 .mail-table td {
-    padding: .714em;
+    padding: 10px;
 }
 
 .mail-table td:nth-child(3) {
@@ -44,5 +44,12 @@
 }
 
 .mail-preview-details p {
-    padding-right: .6em;
+    padding-right: .5em;
+}
+
+@media (max-width: 490px) {
+    .mail-table td {
+        padding: 0;
+        padding-right: .2em;
+    }
 }

@@ -29,11 +29,14 @@ export function MailCompose({ onAddMail }) {
 
     return <Fragment>
         <button className="btn-mail-compose" onClick={onOpenMailCompose}>
-            New email</button>
+            <span className="fa-solid fa-pen"></span>
+            <span>New email</span>
+            </button>
         <section className="mail-compose" ref={elMailComposeRef}>
             <header className="mail-compose-header">
                 <span>new message</span>
-                <button onClick={onCloseMailCompose}>X</button>
+                <button className="fa-solid fa-xmark"
+                    onClick={onCloseMailCompose}></button>
             </header>
             <form className="mail-compose-form" id="form-compose"
                 onSubmit={onSendMail}>

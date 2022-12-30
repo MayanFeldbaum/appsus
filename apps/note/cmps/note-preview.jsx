@@ -23,7 +23,7 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
 
     function TodosList({ todos }) {
         return <ul>
-            {todos.map((todo, index) => <li><textarea onInput={event => handleListChange(event,index)} value={todo} /></li>)}
+            {todos.map((todo, index) => <ol className="todo-list-textarea"><textarea onInput={event => handleListChange(event,index)} value={todo.txt} /></ol>)}
         </ul>
     }
 
@@ -49,9 +49,6 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
 
     if (note.type === 'note-todos') return (
         <div className="note-preview" style={{ backgroundColor: note.style.backgroundColor, fontFamily: note.style.fontFamily }}>
-            {/* <textarea value={TodosList()} className="edit-note-text" type="text" id="note-text" name="text"
-            onChange={handleChange}>
-        </textarea> */}
             <TodosList todos={todos} />
             <NoteEditor note={note} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onDuplicateNote={onDuplicateNote} onTogglePin={onTogglePin} /></div>
     )

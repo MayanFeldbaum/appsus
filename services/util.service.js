@@ -7,7 +7,7 @@ export const utilService = {
     getDayName,
     getMonthName,
     formatTime, 
-    getFormattedTime
+    getFormattedTime,
 }
 
 const SECOND = 1000

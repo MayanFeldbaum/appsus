@@ -1,21 +1,7 @@
-.note-list-pinned{
-column-count:3;
-column-gap:5%;
+.note-list-pinned,.note-list-unpinned{
 display: flex;
 flex-wrap: wrap;
-width: 85vw;
-align-items: flex-start;
 padding:none;
-margin:0 auto;
+align-items: center;
+justify-content: center;
 }
-
-.note-list-unpinned{
-    column-count:3;
-    column-gap:5%;
-    display: flex;
-    flex-wrap: wrap;
-    width: 85vw;
-    align-items: flex-start;
-    padding:none;
-    margin:0 auto;
-    }

@@ -56,46 +56,83 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
-                    txt: "i am first!"
+                    txt: "find hotel recommendations in Portugal"
                 },
                 style: {
-                    backgroundColor: "#ffff",
+                    backgroundColor: "rgb(209,179,179)",
                     fontFamily: "Arial"
-                }
-            },
-            {
-                id: "n107",
-                type: "note-txt",
-                isPinned: false,
-                info: {
-                    txt: "i am second!"
                 },
-                style: {
-                    backgroundColor: "#ffff",
-                    fontFamily: "Arial"
-                }
+                createdAt: new Date().toLocaleDateString()
             },
             {
                 id: "n102",
-                type: "note-img",
+                type: "note-txt",
+                isPinned: false,
                 info: {
-                    url: "https://images.unsplash.com/photo-1463947628408-f8581a2f4aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                    title: "Bobi and Me"
+                    txt: "Buy a birthday gift for Sarah"
                 },
                 style: {
-                    backgroundColor: "#ffff",
+                    backgroundColor: "#dda15e",
                     fontFamily: "Arial"
-                }
+                },
+                createdAt: new Date().toLocaleDateString()
             },
-            // {
-            //     id: "n103",
-            //     type: "note-todos",
-            //     info: {
-            //         label: "Get my stuff together", todos: [
-            //             { txt: "Driving liscence", doneAt: null },
-            //             { txt: "Coding power", doneAt: 187111111 }]
-            //     }
-            // }
+            {
+                id: "n103",
+                type: "note-img",
+                info: {
+                    url: "https://images.unsplash.com/photo-1582911131929-b5fa50720002?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+                    title: "Image"
+                },
+                style: {
+                    backgroundColor: "#f4f3ee",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n104",
+                type: "note-todos",
+                info: {
+                    label: "Get my stuff together",
+                     todos: [
+                        { txt: "Milk"},
+                        { txt: "Eggs"},
+                        { txt: "Bread"},
+                    ]
+                },
+                style: {
+                    backgroundColor: "rgb(175,217,207)",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n105",
+                type: "note-img",
+                info: {
+                    url: "https://images.unsplash.com/photo-1603208228995-e1363f894188?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+                    title: "Image"
+                },
+                style: {
+                    backgroundColor: "#dda15e",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n106",
+                type: "note-video",
+                info: {
+                    url: "https://www.youtube.com/embed/uXnLyUZYkVw",
+                    title: "video"
+                },
+                style: {
+                    backgroundColor: "#f4f3ee",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
         ]
         storageService.saveToStorage(NOTES_KEY, notes)
     }

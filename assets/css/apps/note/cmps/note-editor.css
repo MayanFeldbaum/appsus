@@ -1,8 +1,17 @@
 .note-editor{
 display: flex;
 justify-content: space-evenly;
+margin-block-start: 10px;
 }
 
 .input-color{
     width:5px;
+}
+
+.note-editor i{
+    cursor: pointer;
+}
+
+.note-editor .active{
+    color:#fcc427;
 }

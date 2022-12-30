@@ -58,7 +58,8 @@ export function NoteAdd({ onAddNote }) {
             style: {
                 backgroundColor: "#ffff",
                 fontFamily: "Arial"
-            }
+            },
+            createdAt: new Date().toLocaleDateString()
         }
         onAddNote(newNoteTxt)
     }
@@ -74,7 +75,8 @@ export function NoteAdd({ onAddNote }) {
             style: {
                 backgroundColor: "#ffff",
                 fontFamily: "Arial"
-            }
+            },
+            createdAt: new Date().toLocaleDateString()
         }
         onAddNote(newNoteImg)
     }
@@ -90,7 +92,8 @@ export function NoteAdd({ onAddNote }) {
             style: {
                 backgroundColor: "#ffff",
                 fontFamily: "Arial"
-            }
+            },
+            createdAt: new Date().toLocaleDateString()
         }
         onAddNote(newNoteVideo)
     }
@@ -106,7 +109,8 @@ export function NoteAdd({ onAddNote }) {
             style: {
                 backgroundColor: "#ffff",
                 fontFamily: "Arial"
-            }
+            },
+            createdAt: new Date().toLocaleDateString()
         }
         onAddNote(newNoteTodos)
     }
@@ -119,10 +123,12 @@ export function NoteAdd({ onAddNote }) {
 
     function getTodosTxt() {
         const splitTxt = noteTxt.split(',')
-        console.log(splitTxt);
-        const title = splitTxt.shift()
-        console.log(splitTxt);
-        return splitTxt
+        const TodosList = splitTxt.map(todo=>{
+            return {
+                txt: todo
+            }
+        })
+        return TodosList
     }
 
     return <div className="input-new-note">
@@ -131,7 +137,8 @@ export function NoteAdd({ onAddNote }) {
                 onChange={handleChange} placeholder={placeholderInput} value={noteTxt}>
             </input>
             <div className="note-type-icons">
-                {addNotesBtns.map(btn=> { return <li title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}    
+                {addNotesBtns.map(btn=> { return <li title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}
+    
             </div>
         </form>
     </div>

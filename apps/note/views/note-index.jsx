@@ -107,8 +107,14 @@ export function NoteIndex() {
     }
 
     if (!notes) return
-    return <div className="notes-index">
+    return <div className="notes-index note-layout">
+        <section className="main-nav">
+            <div className="appsus-nav">
+                <button className="fa-solid fa-bars"></button>
+                <div className="mail-logo">Suskeep</div>
+            </div>
         <NoteFilter onSetFilter={onSetFilter} />
+            </section>
         <NoteAdd onAddNote={onAddNote} />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} onUpdateNoteTodos={onUpdateNoteTodos} onTogglePin={onTogglePin} />
     </div>

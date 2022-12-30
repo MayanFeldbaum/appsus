@@ -37,3 +37,7 @@ background-color: blue;
     margin-inline-end: 1rem;
     cursor: pointer;
 }
+
+.note-type-icons .active{
+    color: #fcc427;
+}

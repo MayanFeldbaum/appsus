@@ -7,10 +7,10 @@ export function NoteAdd({ onAddNote }) {
     const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
 
     const addNotesBtns = [
-        { title: 'Text', className: 'far fa-file-alt', type: 'txt' },
-        { title: 'Image', className: 'far fa-file-image', type: 'img' },
-        { title: 'Video', className: 'fab fa-youtube', type: 'video' },
-        { title: 'List', className: 'fa solid fa-list', type: 'list' }
+        { title: 'Text', className: 'far fa-file-alt ', type: 'txt' },
+        { title: 'Image', className: 'far fa-file-image ', type: 'img' },
+        { title: 'Video', className: 'fab fa-youtube ', type: 'video' },
+        { title: 'List', className: 'fa solid fa-list ', type: 'list' }
     ]
 
 
@@ -131,11 +131,7 @@ export function NoteAdd({ onAddNote }) {
                 onChange={handleChange} placeholder={placeholderInput} value={noteTxt}>
             </input>
             <div className="note-type-icons">
-            
-                <li title="Text" type='txt' className={`far fa-file-alt ${cmpType === 'txt' && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>
-                <li title="Image" type='img' className="far fa-file-image" onClick={ev => setCmpType(ev.target.type)}></li>
-                <li title="Video" type='video' className="fab fa-youtube" onClick={ev => setCmpType(ev.target.type)}></li>
-                <li title="List" type='list' className="fa solid fa-list" onClick={ev => setCmpType(ev.target.type)}></li>
+                {addNotesBtns.map(btn=> { return <li title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}    
             </div>
         </form>
     </div>

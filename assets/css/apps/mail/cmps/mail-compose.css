@@ -26,13 +26,17 @@
 .btn-mail-compose {
     font-family: google-sans-medium, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bgc-input-clr);
-    display: inline-block;
     padding: 1.5em;
     border-radius: 1em;
     margin-bottom: 1em;
     margin-left: .5em;
 }
 
+.btn-mail-compose .fa-pen {
+    margin-right: 0.5em;
+}
+
+.mail-compose-footer button:hover,
 .btn-mail-compose:hover {
     background-color: var(--bgc-input-clr);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -42,4 +46,34 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;
     border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.mail-compose-footer button {
+    background-color: var(--bgc-input-clr);
+    border-radius: 1em;
+    padding: 1em;
+}
+
+@media (max-width: 840px) {
+    .btn-mail-compose {
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 490px) {
+    .mail-compose {
+        left: 0px;
+        height: 90vh;
+        width: 93vw;
+        justify-content: start;
+    }
+
+    .mail-compose-footer {
+        position: fixed;
+        bottom: 2em;
+    }
 }

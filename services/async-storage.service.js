@@ -23,7 +23,11 @@ function post(entityType, newEntity) {
     newEntity = {...newEntity}
     newEntity.id = _makeId()
     return query(entityType).then(entities => {
-        entities.push(newEntity)
+        if(entityType === 'mailDB') {
+            entities.unshift(newEntity)
+        } else {
+            entities.push(newEntity)
+        }
         _save(entityType, entities)
         return newEntity
     })

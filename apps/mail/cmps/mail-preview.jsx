@@ -19,7 +19,7 @@ export function MailPreview({ mail, onUpdateMail }) {
             onUpdateMail(mail.id, { ...mail, isRead: true })
         }}>
             <td>{from}</td>
-            <LongTxt txt={subject} length={length = 50} />
+            <LongTxt txt={subject} length={length = 30} />
             <td>{utilService.formatTime(sentAt)}</td>
         </tr>
         <tr hidden={!isExpanded}>

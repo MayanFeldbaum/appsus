@@ -18,6 +18,7 @@ export function MailSort({ onSetSort }) {
 
     return <section className="mail-sort">
         <select name="sort-by" onChange={handleChange}>
+            <option value="">Sort by</option>
             <option value="date">Sort by date</option>
             <option value="subject">Sort by subject</option>
         </select>

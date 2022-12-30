@@ -12,7 +12,9 @@ export const mailService = {
     save,
     getDefaultFilter,
     getEmptyMail,
-    getDefaultSort
+    getDefaultSort,
+    getNextMailId,
+    getPrevMailId
 }
 
 function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
@@ -58,7 +60,6 @@ function remove(mailId) {
 }
 
 function save(mail) {
-    // console.log('mail:', mail)
     if (mail.id) {
         return asyncStorageService.put(MAIL_KEY, mail)
     } else {
@@ -66,12 +67,12 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(subject = '', body = '', sentAt = Date.now(), from = getLoggedUser().email, to = '') {
+function getEmptyMail(subject = '', body = '', isRead = false, sentAt = Date.now(), from = getLoggedUser().email, to = '') {
     return {
         id: '',
         subject,
         body,
-        isRead: utilService.getRandomIntInclusive(0, 1) > 0.4 ? true : false,
+        isRead,
         sentAt,
         removeAt: null,
         from,
@@ -87,40 +88,42 @@ function getDefaultSort() {
     return { 'sort-by': '' }
 }
 
-const criteria = {
-    status: 'inbox/sent/trash/draft',
-    txt: 'puki', // no need to support complex text search 
-    isRead: true, // (optional property, if missing: show all)
-    isStared: true, // (optional property, if missing: show all)
-    lables: ['important', 'romantic'] // has any of the labels 
+function getNextMailId(mailId) {
+    return asyncStorageService.query(MAIL_KEY)
+        .then(mails => {
+            var idx = mails.findIndex(mail => mail.id === mailId)
+            if (idx === mails.length - 1) idx = -1
+            return mails[idx + 1].id
+        })
 }
+
+function getPrevMailId(mailId) {
+    return asyncStorageService.query(MAIL_KEY)
+        .then(mails => {
+            var idx = mails.findIndex(mail => mail.id === mailId)
+            if (idx === 0) idx = mails.length - 1
+            return mails[idx - 1].id
+        })
+}
+
 
 function _createMails() {
     let mails = storageService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
         mails = []
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, 'momo@momo.com', 'github@github.com'))
-        mails.push(_createMail('Welcome to GitHub', 'You`re the newest member in this community of over 94 million people who use GitHub to host and review code, manage projects, and build software', 1669729703000, 'github@github.com', 'momo@momo.com'))
-        mails.push(_createMail('Work in Slack with people outside your company', 'Slack Connect is a secure way to communicate with the external people and partners you invite to your Slack instance, and it works just like regular Slack.', 1659732506000, 'momo@momo.com', 'slackhq@mail.com'))
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false, 1551133930594, 'momo@momo.com', 'github@github.com'))
+        mails.push(_createMail('Welcome to GitHub', 'You`re the newest member in this community of over 94 million people who use GitHub to host and review code, manage projects, and build software', true, 1669729703000, 'github@github.com', 'momo@momo.com'))
+        mails.push(_createMail('Work in Slack with people outside your company', 'Slack Connect is a secure way to communicate with the external people and partners you invite to your Slack instance, and it works just like regular Slack.', true, 1659732506000, 'momo@momo.com', 'slackhq@mail.com'))
         console.log('mails:', mails)
         storageService.saveToStorage(MAIL_KEY, mails)
     }
 }
 
-function _createMail(subject, body, sentAt, from, to) {
-    const mail = getEmptyMail(subject, body, sentAt, from, to)
+function _createMail(subject, body, isRead, sentAt, from, to) {
+    const mail = getEmptyMail(subject, body, isRead, sentAt, from, to)
     mail.id = utilService.makeId()
     return mail
 }
-
-// const email = {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt: 1551133930594,
-//     to: 'momo@momo.com'
-// }
 
 function getLoggedUser() {
     return {

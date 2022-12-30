@@ -71,16 +71,45 @@ export function NoteIndex() {
             })
     }
 
+    function onUpdateNoteTodos(noteId,newTodos) {
+        notesService.get(noteId)
+            .then((note) => {
+                const newNote = { ...note, info: { ...note.info, ...newTodos }}
+                notesService.save(newNote)
+                    .then((updatedNote) => {
+                        const updatedNotes = notes.map(note => {
+                            if (note.id === noteId) return updatedNote
+                            return note
+                        })
+                        setNotes(updatedNotes)
+                    })
+            })
+    }
+
     function onDuplicateNote(noteToDuplicate){
         const cloneNote ={...noteToDuplicate}
         delete cloneNote.id
         onAddNote(cloneNote)
     }
 
+    function onTogglePin(noteId){
+        notesService.get(noteId)
+            .then((note) => {const newNote = { ...note, isPinned:(!note.isPinned) }
+            notesService.save(newNote)
+                .then((updatedNote) => {
+                    const updatedNotes = notes.map(note => {
+                        if (note.id === noteId) return updatedNote
+                        return note
+                    })
+                    setNotes(updatedNotes)
+                })
+            })
+    }
+
     if (!notes) return
     return <div className="notes-index">
         <NoteFilter onSetFilter={onSetFilter} />
         <NoteAdd onAddNote={onAddNote} />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} onUpdateNoteTodos={onUpdateNoteTodos} onTogglePin={onTogglePin} />
     </div>
 }

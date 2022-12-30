@@ -35,7 +35,7 @@ export function NoteAdd({ onAddNote }) {
         const noteUrl = noteTxt
         const newUrl = noteUrl.split('=').slice(-1)[0]
         const finalURL= `https://www.youtube.com/embed/${newUrl}`
-        console.log(finalURL);
+        console.log(getURL);
         return finalURL
     }
 
@@ -110,7 +110,9 @@ export function NoteAdd({ onAddNote }) {
 
     function getTodosTxt(){
         const splitTxt= noteTxt.split(',') 
+        console.log(splitTxt);
         const title= splitTxt.shift()
+        console.log(splitTxt);
         return splitTxt
      }
 

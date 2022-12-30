@@ -65,7 +65,7 @@ export function MailIndex() {
         <section className="main-nav">
             <div className="appsus-nav">
                 <button className="fa-solid fa-bars"></button>
-                <div>Susmail</div>
+                <div className="mail-logo">Susmail</div>
             </div>
             <MailFilterSearch onSetFilter={onSetFilter} />
         </section>

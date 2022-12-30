@@ -25,10 +25,14 @@ export function MailPreview({ mail, onUpdateMail }) {
         <tr hidden={!isExpanded}>
             <td colSpan="3">
                 <div className="expanded-td">
-                    <Link to={`/mail/${id}`}>Details</Link>
-                    <p>{utilService.getFormattedTime(sentAt)}</p>
-                    <p>{from}</p>
-                    <p>{to}</p>
+                    <div className="mail-preview-head">
+                        <h3>{subject}</h3>
+                        <Link to={`/mail/${id}`} className="fa-solid fa-arrow-up-right-from-square"></Link>
+                    </div>
+                    <div className="mail-preview-details">
+                        <span>{`from: <${from}> to: <${to}>`}</span>
+                        <p>{utilService.getFormattedTime(sentAt)}</p>
+                    </div>
                     <p>{body}</p>
                 </div>
             </td>

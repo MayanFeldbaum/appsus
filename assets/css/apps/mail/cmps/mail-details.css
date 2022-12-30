@@ -4,12 +4,40 @@
     overflow-y: scroll;
     width: 100%;
     flex: 6;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--header-clr);
+}
+
+.mail-details-header {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
 .mail-details h2 {
     font-size: 1.25rem;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-    border-top-left-radius: .5em;
-    border-top-right-radius: .5em;
+    margin-bottom: .5em;
+}
+
+.mail-details-content {
     padding: .714em;
+
+}
+
+.mail-details .fa-regular {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+}
+
+.mail-details a {
+    padding: .9rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.mail-details a:hover {
+    background-color: var(--hover-clr);
+
+    transition: background-color .6s;
 }

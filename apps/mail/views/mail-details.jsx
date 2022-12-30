@@ -38,12 +38,15 @@ export function MailDetails() {
     const { id, subject, to, from, body } = mail
     return <section className="mail-details">
         <header className="mail-details-header">
-            <Link to={'/mail'}>go back</Link>
-            <button onClick={() => onRemoveMail(id)}>delete me</button>
+            <Link to={'/mail'}
+                className="fa-solid fa-arrow-left"></Link>
+            <button onClick={() => onRemoveMail(id)}
+                className="fa-regular fa-trash-can"></button>
         </header>
-        <h2>{subject}</h2>
-        <span>{from}</span>
-        <span>{to}</span>
-        <p>{body}</p>
+        <div className="mail-details-content">
+            <h2>{subject}</h2>
+            <span>{`from: <${from}> to: <${to}>`}</span>
+            <p>{body}</p>
+        </div>
     </section>
 }

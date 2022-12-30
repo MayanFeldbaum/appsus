@@ -2,8 +2,14 @@
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
-.mail-table tr:hover {
+.mail-table tr:nth-child(odd) {
+    cursor: pointer;
+}
+
+.mail-table tr:nth-child(odd):hover {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+    transition: box-shadow .6s;
 }
 
 .mail-table td {
@@ -16,7 +22,6 @@
 }
 
 .expanded-td {
-    background-color: red;
     display: flex;
     flex-direction: column;
 }
@@ -24,4 +29,20 @@
 .unread {
     background-color: var(--header-clr);
     border-bottom: rgba(17, 17, 26, 0.1);
+}
+
+.mail-preview-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mail-preview-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mail-preview-details p {
+    padding-right: .6em;
 }

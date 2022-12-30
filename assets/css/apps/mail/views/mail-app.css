@@ -11,7 +11,7 @@
     flex: 6;
 }
 
-.mail-list-header{
+.mail-list-header {
     font-size: 1.25rem;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
     border-top-left-radius: .5em;
@@ -23,11 +23,39 @@
 .main-nav {
     display: flex;
     align-items: center;
-    margin-bottom: 1em;
+    margin: 1em 0;
+}
+
+.fa-bars {
+    font-size: 1.4rem;
+    padding: .5em;
+    border-radius: 50%;
+}
+
+.mail-logo {
+    font-size: 1.4rem;
+    padding: .1em;
 }
 
 .appsus-nav {
     display: flex;
-    flex: 1;
+    width: 200px;
+    padding-right: 1rem;
+    align-items: center;
 }
 
+.mail-filter-search {
+    width: 40%;
+}
+
+.mail-index a {
+    border-radius: 50%;
+    padding: .9rem;
+    cursor: pointer;
+}
+
+.mail-index a:hover {
+    background-color: var(--hover-clr);
+
+    transition: background-color .6s;
+}

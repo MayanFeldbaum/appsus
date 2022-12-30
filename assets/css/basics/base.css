@@ -42,6 +42,10 @@ select {
     border-radius: .5em;
 }
 
+select {
+    cursor: pointer;
+}
+
 button {
     border: none;
     cursor: pointer;
@@ -50,4 +54,6 @@ button {
 
 button:hover {
     background-color: var(--hover-clr);
+
+    transition: background-color .6s;
 }

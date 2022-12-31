@@ -4,7 +4,6 @@ const { useParams, useNavigate } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 
 export function MailCompose({ onAddMail }) {
-    // Compose – create a new email and send it
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     const elMailComposeRef = useRef(null)
     const params = useParams()

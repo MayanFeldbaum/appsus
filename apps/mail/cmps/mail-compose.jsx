@@ -7,8 +7,8 @@ export function MailCompose({ onAddMail }) {
     // Compose – create a new email and send it
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     const elMailComposeRef = useRef(null)
-    const parmas = useParams()
-    const paramsFromNote = parmas.txt
+    const params = useParams()
+    const paramsFromNote = params.txt
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,7 +24,6 @@ export function MailCompose({ onAddMail }) {
         ev.preventDefault()
         onCloseMailCompose()
         onAddMail(newMail)
-        navigate('/mail')
     }
 
     function onOpenMailCompose() {
@@ -53,7 +52,7 @@ export function MailCompose({ onAddMail }) {
                     name="to" onChange={handleChange} />
                 <input type="text" placeholder="subject" value={newMail.subject}
                     name="subject" onChange={handleChange} />
-                <textarea rows="15" cols="50" placeholder="body" value={parmas && paramsFromNote || newMail.body}
+                <textarea rows="15" cols="50" placeholder="body" value={params && paramsFromNote || newMail.body}
                     name="body" onChange={handleChange}></textarea>
             </form>
             <footer className="mail-compose-footer">

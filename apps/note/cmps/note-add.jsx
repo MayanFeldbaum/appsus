@@ -1,14 +1,10 @@
 const { useState, useEffect } = React
-const { useParams, useNavigate } = ReactRouterDOM
 
 export function NoteAdd({ onAddNote }) {
 
     const [cmpType, setCmpType] = useState('txt')
     const [noteTxt, setNoteTxt] = useState('')
     const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
-    const parmas = useParams()
-    const paramsFromMail = parmas.body
-    const navigate = useNavigate()
 
     const addNotesBtns = [
         { title: 'Text', className: 'far fa-file-alt ', type: 'txt' },
@@ -17,10 +13,8 @@ export function NoteAdd({ onAddNote }) {
         { title: 'List', className: 'fa solid fa-list ', type: 'list' }
     ]
 
-
     useEffect(() => {
         placeholderUpdate()
-        if(paramsFromMail) addNoteTxt()
     }, [cmpType])
 
     function placeholderUpdate() {
@@ -58,7 +52,7 @@ export function NoteAdd({ onAddNote }) {
             type: "note-txt",
             isPinned: false,
             info: {
-                txt: parmas && paramsFromMail || noteTxt,
+                txt:noteTxt
             },
             style: {
                 backgroundColor: "#ffff",
@@ -130,23 +124,23 @@ export function NoteAdd({ onAddNote }) {
 
     function getTodosTxt() {
         const splitTxt = noteTxt.split(',')
-        const todosList = splitTxt.map(todo=>{
+        const todosList = splitTxt.map(todo => {
             return {
                 txt: todo,
-                isDone:false
+                isDone: false
             }
         })
         todosList.shift()
         return todosList
     }
 
-    return <div className="input-new-note">
+        return <div className="input-new-note">
         <form className="input-note-form" onSubmit={onSubmitNote}>
             <input className="text" type="text" id="note-text" name="text"
                 onChange={handleChange} placeholder={placeholderInput} value={noteTxt}>
             </input>
             <div className="note-type-icons">
-                {addNotesBtns.map(btn=> { return <li key={btn.title} title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}
+                {addNotesBtns.map(btn => { return <li key={btn.title} title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li> })}
             </div>
         </form>
     </div>

@@ -1,6 +1,5 @@
 const { useState, useEffect } = React
-const { Link, useNavigate } = ReactRouterDOM
-
+const { Link, useNavigate,useParams } = ReactRouterDOM
 
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
@@ -11,14 +10,37 @@ import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function NoteIndex() {
 
+    const params = useParams()
+    const paramsFromMail = params.body
+
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState('')
     const [isModal, setIsModal] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
+        if(paramsFromMail) addNoteTxt()
         loadNotes()
     }, [filterBy])
+
+
+    function addNoteTxt() {
+        const newNoteTxt = {
+            type: "note-txt",
+            isPinned: false,
+            info: {
+                txt:paramsFromMail
+            },
+            style: {
+                backgroundColor: "#ffff",
+                fontFamily: "Arial"
+            },
+            createdAt: new Date().toLocaleDateString()
+        }
+        onAddNote(newNoteTxt)
+        navigate('/note')
+    }
+
 
     function loadNotes() {
         notesService.query(filterBy)

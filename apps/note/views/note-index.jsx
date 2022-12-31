@@ -3,6 +3,7 @@ const { useState, useEffect } = React
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteAdd } from '../cmps/note-add.jsx'
+import { UserMsg } from '../../../cmps/user-msg.jsx'
 
 import { notesService } from '../services/note.service.js'
 
@@ -10,6 +11,7 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState('')
+    const [userMsg, setUserMsg] = useState('')
 
     useEffect(() => {
         loadNotes()
@@ -29,7 +31,24 @@ export function NoteIndex() {
             .then(() => {
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 setNotes(updatedNotes)
-                // flashMsg('Note removed!')
+                flashMsg('Note removed!')
+            })
+    }
+
+    function onRemoveTodo(noteId, listIndex) {
+        notesService.get(noteId)
+            .then((note) => {
+                const noteTodoListToEdit = note.info.todos
+                const updatedNoteList = noteTodoListToEdit.filter((todo,index) => index !== listIndex)
+                const newNote = { ...note, info: { ...note.info, todos:[...updatedNoteList] } }
+                notesService.save(newNote)
+                    .then((updatedNote) => {
+                        const updatedNotes = notes.map(note => {
+                            if (note.id === noteId) return updatedNote
+                            else return note
+                        })
+                        setNotes(updatedNotes)
+                    })
             })
     }
 
@@ -38,6 +57,7 @@ export function NoteIndex() {
             .then((newNote) => {
                 const newNotes = [...notes, newNote]
                 setNotes(newNotes)
+                flashMsg('Note added!')
             })
     }
 
@@ -71,10 +91,10 @@ export function NoteIndex() {
             })
     }
 
-    function onUpdateNoteTodos(noteId,newTodos) {
+    function onUpdateNoteTodos(noteId, newTodos) {
         notesService.get(noteId)
             .then((note) => {
-                const newNote = { ...note, info: { ...note.info, ...newTodos }}
+                const newNote = { ...note, info: { ...note.info, ...newTodos } }
                 notesService.save(newNote)
                     .then((updatedNote) => {
                         const updatedNotes = notes.map(note => {
@@ -86,36 +106,45 @@ export function NoteIndex() {
             })
     }
 
-    function onDuplicateNote(noteToDuplicate){
-        const cloneNote ={...noteToDuplicate}
+    function onDuplicateNote(noteToDuplicate) {
+        const cloneNote = { ...noteToDuplicate }
         delete cloneNote.id
         onAddNote(cloneNote)
     }
 
-    function onTogglePin(noteId){
+    function onTogglePin(noteId) {
         notesService.get(noteId)
-            .then((note) => {const newNote = { ...note, isPinned:(!note.isPinned) }
-            notesService.save(newNote)
-                .then((updatedNote) => {
-                    const updatedNotes = notes.map(note => {
-                        if (note.id === noteId) return updatedNote
-                        return note
+            .then((note) => {
+                const newNote = { ...note, isPinned: (!note.isPinned) }
+                notesService.save(newNote)
+                    .then((updatedNote) => {
+                        const updatedNotes = notes.map(note => {
+                            if (note.id === noteId) return updatedNote
+                            return note
+                        })
+                        setNotes(updatedNotes)
                     })
-                    setNotes(updatedNotes)
-                })
             })
+    }
+
+    function flashMsg(msg) {
+        setUserMsg(msg)
+        setTimeout(() => {
+            setUserMsg('')
+        }, 3000)
     }
 
     if (!notes) return
     return <div className="notes-index note-layout">
+        {userMsg && <UserMsg msg={userMsg} />}
         <section className="main-nav">
             <div className="appsus-nav">
                 <button className="fa-solid fa-bars"></button>
                 <div className="mail-logo">Suskeep</div>
             </div>
-        <NoteFilter onSetFilter={onSetFilter} />
-            </section>
+            <NoteFilter onSetFilter={onSetFilter} />
+        </section>
         <NoteAdd onAddNote={onAddNote} />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} onUpdateNoteTodos={onUpdateNoteTodos} onTogglePin={onTogglePin} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} onUpdateNoteTodos={onUpdateNoteTodos} onTogglePin={onTogglePin} onRemoveTodo={onRemoveTodo} />
     </div>
 }

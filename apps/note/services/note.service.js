@@ -78,11 +78,11 @@ function _createNotes() {
                 createdAt: new Date().toLocaleDateString()
             },
             {
-                id: "n103",
+                id: "n107",
                 type: "note-img",
                 info: {
-                    url: "https://images.unsplash.com/photo-1582911131929-b5fa50720002?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                    title: "Image"
+                    url: "https://images.unsplash.com/photo-1634547588713-edd93045b9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1700&q=80",
+                    title: "Living room inspiration"
                 },
                 style: {
                     backgroundColor: "#f4f3ee",
@@ -94,11 +94,11 @@ function _createNotes() {
                 id: "n104",
                 type: "note-todos",
                 info: {
-                    label: "Get my stuff together",
+                    title: "Grocery list",
                      todos: [
-                        { txt: "Milk"},
-                        { txt: "Eggs"},
-                        { txt: "Bread"},
+                        { txt: "Milk", isDone:false},
+                        { txt: "Eggs", isDone:false},
+                        { txt: "Bread", isDone:false},
                     ]
                 },
                 style: {
@@ -112,7 +112,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "https://images.unsplash.com/photo-1603208228995-e1363f894188?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                    title: "Image"
+                    title: "A Summer Spent Seaside"
                 },
                 style: {
                     backgroundColor: "#dda15e",
@@ -129,6 +129,45 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: "#f4f3ee",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n103",
+                type: "note-img",
+                info: {
+                    url: "https://images.unsplash.com/photo-1582911131929-b5fa50720002?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+                    title: "Here & There"
+                },
+                style: {
+                    backgroundColor: "#f4f3ee",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n108",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "Schedule an appointment"
+                },
+                style: {
+                    backgroundColor: "rgb(209,179,179)",
+                    fontFamily: "Arial"
+                },
+                createdAt: new Date().toLocaleDateString()
+            },
+            {
+                id: "n109",
+                type: "note-video",
+                info: {
+                    url: "https://www.youtube.com/embed/Lp6XlsBm_Lw",
+                    title: "video"
+                },
+                style: {
+                    backgroundColor: "#b7b7a4",
                     fontFamily: "Arial"
                 },
                 createdAt: new Date().toLocaleDateString()

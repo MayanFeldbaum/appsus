@@ -23,13 +23,9 @@ input:focus{
     padding: 0;
     justify-content: space-between;
 }
-
-input .note-text{
-background-color: blue;
+.input-note-form input{
+width: 50%;
 }
-
-/* .input-note-form ::placeholder{
-} */
 
 .note-type-icons{
     display:flex;

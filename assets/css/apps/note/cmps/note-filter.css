@@ -5,4 +5,15 @@
 
 .note-filter-search {
 display: flex;
+width: 50%;
+}
+
+.filterByTxt{
+    width:50%;
+}
+
+@media (max-width: 730px){
+    .note-filter-search {
+        width: 100%;
+    }
 }

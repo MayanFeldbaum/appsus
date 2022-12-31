@@ -118,17 +118,20 @@ export function NoteAdd({ onAddNote }) {
     function getTodosTitle() {
         const splitTxt = noteTxt.split(',')
         const title = splitTxt[0]
+        console.log(title);
         return title
     }
 
     function getTodosTxt() {
         const splitTxt = noteTxt.split(',')
-        const TodosList = splitTxt.map(todo=>{
+        const todosList = splitTxt.map(todo=>{
             return {
-                txt: todo
+                txt: todo,
+                isDone:false
             }
         })
-        return TodosList
+        todosList.shift()
+        return todosList
     }
 
     return <div className="input-new-note">
@@ -137,7 +140,7 @@ export function NoteAdd({ onAddNote }) {
                 onChange={handleChange} placeholder={placeholderInput} value={noteTxt}>
             </input>
             <div className="note-type-icons">
-                {addNotesBtns.map(btn=> { return <li title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}
+                {addNotesBtns.map(btn=> { return <li key={btn.title} title={btn.title} type={btn.type} className={`${btn.className} ${cmpType === btn.type && 'active'}`} onClick={ev => setCmpType(ev.target.type)}></li>})}
             </div>
         </form>
     </div>

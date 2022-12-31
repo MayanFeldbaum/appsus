@@ -1,5 +1,5 @@
 
+export function NoteTodos({ note }) {
+console.log('hi');
 
-export function NoteTodos() {
-    console.log('note todos')
 }

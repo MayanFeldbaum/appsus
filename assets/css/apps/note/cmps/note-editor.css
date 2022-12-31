@@ -15,3 +15,15 @@ margin-block-start: 10px;
 .note-editor .active{
     color:#fcc427;
 }
+
+.note-editor :hover>*{
+    transform: scale(1.2);
+}
+
+.note-editor button{
+    background-color: transparent;
+}
+
+.note-editor>*{
+    font-size: 1.2em;
+}

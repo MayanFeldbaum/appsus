@@ -9,6 +9,7 @@
     margin: 1rem;
     white-space: pre-wrap;
     border: 1px solid rgb(244, 244, 244);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.148);
 }
 
 button.color-btn,
@@ -36,6 +37,7 @@ button.color-btn,
     font-size: 1rem;
     padding:15px;
     background-color: transparent;
+    font-size:1.3rem;
 }
 
 .todo-list-textarea textarea{
@@ -45,7 +47,16 @@ button.color-btn,
     resize: none;
 }
 
-
 .note-preview img{
     border-radius: 5px;
+}
+
+.note-preview span{
+    cursor: default;
+}
+
+h1.todo-list-title{
+    text-align: center;
+    font-style: italic;
+    margin-block-start: 1rem;
 }

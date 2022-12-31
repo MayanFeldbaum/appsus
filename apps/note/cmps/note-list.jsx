@@ -1,6 +1,7 @@
 import { NotePreview } from "./note-preview.jsx"
 
 export function NoteList({ notes, onRemoveNote, updateNoteStyle, onUpdateNoteTxt, onDuplicateNote, onUpdateNoteTodos, onTogglePin, onRemoveTodo }) {
+    console.log(notes);
     return (<div>
         <div className="note-list-pinned">
             {notes.map(note => {

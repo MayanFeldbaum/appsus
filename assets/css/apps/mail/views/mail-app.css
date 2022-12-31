@@ -47,18 +47,6 @@
     width: 58%;
 }
 
-.mail-index a {
-    border-radius: 50%;
-    padding: .9rem;
-    cursor: pointer;
-}
-
-.mail-index a:hover {
-    background-color: var(--hover-clr);
-
-    transition: background-color .6s;
-}
-
 @media (min-width: 420px) {
     .appsus-nav {
         width: 200px;

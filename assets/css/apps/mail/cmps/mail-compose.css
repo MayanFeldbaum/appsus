@@ -23,13 +23,14 @@
     justify-content: space-between;
 }
 
-.btn-mail-compose {
+.btn-mail-compose  {
     font-family: google-sans-medium, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(190, 214, 248);
     padding: 1.5em;
     border-radius: 1em;
     margin-bottom: 1em;
     margin-left: .5em;
+    display: inline-block;
 }
 
 .btn-mail-compose .fa-pen {

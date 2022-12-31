@@ -105,7 +105,8 @@ function _createNotes() {
                     backgroundColor: "rgb(175,217,207)",
                     fontFamily: "Arial"
                 },
-                createdAt: new Date().toLocaleDateString()
+                createdAt: new Date().toLocaleDateString(),
+                urlString: 'Milk, Eggs, Bread'
             },
             {
                 id: "n105",

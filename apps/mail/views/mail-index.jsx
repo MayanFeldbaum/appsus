@@ -65,11 +65,11 @@ export function MailIndex() {
     function openModal() {
         return <div className="modal">
             <div className="modal-content">
-            <Link to="/"><img src="assets/img/home.png" alt="" /></Link>
-            <Link to="/about"><img src="assets/img/info.png" alt="" /></Link>
-            <Link to="/mail"><img src="assets/img/gmail.png" alt="" /></Link>
-            <Link to="/note"><img src="assets/img/keeps.png" alt="" /></Link>
-            <Link to="/book"><img src="assets/img/books.png" alt="" /></Link>
+                <Link to="/"><img src="assets/img/home.png" alt="" /></Link>
+                <Link to="/about"><img src="assets/img/info.png" alt="" /></Link>
+                <Link to="/mail"><img src="assets/img/gmail.png" alt="" /></Link>
+                <Link to="/note"><img src="assets/img/keeps.png" alt="" /></Link>
+                <Link to="/book"><img src="assets/img/books.png" alt="" /></Link>
             </div>
         </div>
     }

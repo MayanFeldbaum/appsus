@@ -1,10 +1,14 @@
 const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouterDOM
 
 export function NoteAdd({ onAddNote }) {
 
     const [cmpType, setCmpType] = useState('txt')
     const [noteTxt, setNoteTxt] = useState('')
     const [placeholderInput, setPlaceholderInput] = useState("Whats on your mind...")
+    const parmas = useParams()
+    const paramsFromMail = parmas.body
+    const navigate = useNavigate()
 
     const addNotesBtns = [
         { title: 'Text', className: 'far fa-file-alt ', type: 'txt' },
@@ -16,6 +20,7 @@ export function NoteAdd({ onAddNote }) {
 
     useEffect(() => {
         placeholderUpdate()
+        if(paramsFromMail) addNoteTxt()
     }, [cmpType])
 
     function placeholderUpdate() {
@@ -53,7 +58,7 @@ export function NoteAdd({ onAddNote }) {
             type: "note-txt",
             isPinned: false,
             info: {
-                txt: noteTxt,
+                txt: parmas && paramsFromMail || noteTxt,
             },
             style: {
                 backgroundColor: "#ffff",
@@ -110,7 +115,8 @@ export function NoteAdd({ onAddNote }) {
                 backgroundColor: "#ffff",
                 fontFamily: "Arial"
             },
-            createdAt: new Date().toLocaleDateString()
+            createdAt: new Date().toLocaleDateString(),
+            urlString: noteTxt
         }
         onAddNote(newNoteTodos)
     }

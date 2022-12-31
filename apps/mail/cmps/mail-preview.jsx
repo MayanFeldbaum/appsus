@@ -28,6 +28,7 @@ export function MailPreview({ mail, onUpdateMail }) {
                     <div className="mail-preview-head">
                         <h3>{subject}</h3>
                         <Link to={`/mail/${id}`} className="fa-solid fa-arrow-up-right-from-square"></Link>
+                        <Link to={`/note/${body}`}>Send</Link>
                     </div>
                     <div className="mail-preview-details">
                         <span>{`from: <${from}> to: <${to}>`}</span>

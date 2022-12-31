@@ -1,12 +1,11 @@
 const { useState, useEffect, useRef, Fragment } = React
-const { useNavigate } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
 export function MailCompose({ onAddMail }) {
     // Compose – create a new email and send it
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
-    const elMailComposeRef = useRef(null)
+    const elMailComposeRef = useRef(null)   
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -31,7 +30,7 @@ export function MailCompose({ onAddMail }) {
         <button className="btn-mail-compose" onClick={onOpenMailCompose}>
             <span className="fa-solid fa-pen"></span>
             <span>New email</span>
-            </button>
+        </button>
         <section className="mail-compose" ref={elMailComposeRef}>
             <header className="mail-compose-header">
                 <span>new message</span>

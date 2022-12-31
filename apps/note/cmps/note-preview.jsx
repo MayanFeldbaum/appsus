@@ -6,7 +6,7 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
 
     const [noteTxt, setNoteTxt] = useState(note.info.txt)
     const [todos, setTodos] = useState(note.info.todos)
-    const [todoTxt, setTodTxt] = useState('')
+    const [todoTxt, setTodoTxt] = useState('')
 
     function handleChange({ target }) {
         let { value } = target
@@ -31,13 +31,15 @@ export function NotePreview({ note, onRemoveNote, updateNoteStyle, onUpdateNoteT
 
     function addListTodo({target}){
         let { value } = target
-        setTodTxt(value)
+        setTodoTxt(value)
     }
 
     function onSubmitNote(ev) {
         ev.preventDefault()
-        // onUpdateNoteTodos(todoTxt)
-        setTodTxt('')
+        todos.push({txt: todoTxt, isDone:false})
+        setTodos(todos)
+        onUpdateNoteTodos(note.id,{txt: todoTxt, isDone:false})
+        setTodoTxt('')
     }
 
     if (note.type === 'note-txt') return (<div className="note-preview" style={{ backgroundColor: note.style.backgroundColor}}>

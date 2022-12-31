@@ -1,4 +1,3 @@
-
 export function NoteEditor({ note, onRemoveNote, updateNoteStyle,onDuplicateNote,onTogglePin }) {
     return <div className="note-editor">
     <button className="duplicate-note-btn" onClick={() => onDuplicateNote(note)}><i className="fa-solid fa-clone"></i></button>

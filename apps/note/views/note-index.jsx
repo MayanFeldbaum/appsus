@@ -3,15 +3,15 @@ const { useState, useEffect } = React
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteAdd } from '../cmps/note-add.jsx'
-import { UserMsg } from '../../../cmps/user-msg.jsx'
 
 import { notesService } from '../services/note.service.js'
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState('')
-    const [userMsg, setUserMsg] = useState('')
+
 
     useEffect(() => {
         loadNotes()
@@ -31,7 +31,7 @@ export function NoteIndex() {
             .then(() => {
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 setNotes(updatedNotes)
-                flashMsg('Note removed!')
+                showSuccessMsg('Note removed!')
             })
     }
 
@@ -57,7 +57,7 @@ export function NoteIndex() {
             .then((newNote) => {
                 const newNotes = [...notes, newNote]
                 setNotes(newNotes)
-                flashMsg('Note added!')
+                showSuccessMsg('Note added!')
             })
     }
 
@@ -79,7 +79,9 @@ export function NoteIndex() {
     function onUpdateNoteTxt(noteId, newTxt) {
         notesService.get(noteId)
             .then((note) => {
+                console.log(note);
                 const newNote = { ...note, info: { ...note.info, ...newTxt } }
+                console.log(newNote);
                 notesService.save(newNote)
                     .then((updatedNote) => {
                         const updatedNotes = notes.map(note => {
@@ -91,11 +93,12 @@ export function NoteIndex() {
             })
     }
 
-    function onUpdateNoteTodos(noteId, newTodos) {
+    function onUpdateNoteTodos(noteId, newTodo) {
         notesService.get(noteId)
             .then((note) => {
-                const newNote = { ...note, info: { ...note.info, ...newTodos } }
-                notesService.save(newNote)
+                note.info.todos.push(newTodo)
+                console.log(note);
+                notesService.save(note)
                     .then((updatedNote) => {
                         const updatedNotes = notes.map(note => {
                             if (note.id === noteId) return updatedNote
@@ -127,16 +130,8 @@ export function NoteIndex() {
             })
     }
 
-    function flashMsg(msg) {
-        setUserMsg(msg)
-        setTimeout(() => {
-            setUserMsg('')
-        }, 3000)
-    }
-
     if (!notes) return
     return <div className="notes-index note-layout">
-        {userMsg && <UserMsg msg={userMsg} />}
         <section className="main-nav">
             <div className="appsus-nav">
                 <button className="fa-solid fa-bars"></button>

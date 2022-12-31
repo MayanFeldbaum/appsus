@@ -24,13 +24,15 @@
 
 }
 
-.mail-details a {
+.mail-details a,
+.mail-details button {
     padding: .9rem;
     cursor: pointer;
     border-radius: 50%;
 }
 
-.mail-details a:hover {
+.mail-details a:hover,
+.mail-details button:hover {
     background-color: var(--hover-clr);
 
     transition: background-color .6s;

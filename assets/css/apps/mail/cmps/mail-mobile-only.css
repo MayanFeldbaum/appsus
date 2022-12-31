@@ -2,6 +2,11 @@
     display: none;
 }
 
+.menu-toggle-btn:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
 @media (max-width: 840px) {
     .mail-folder-list {
         position: fixed;

@@ -1,8 +1,8 @@
 .modal {
     position: absolute;
     z-index: 1;
-    right: 3.5rem;
-    top: 7rem;
+    right: 3.2rem;
+    top: 2.5rem;
 }
 
 .modal-content {
@@ -49,8 +49,8 @@
 
 @media (max-width: 420px) {
     .modal {
-        right: 2rem;
-        top: 7rem;
+        right: 1.9rem;
+        top: 2.3rem;
     }
 
     .fa-grip-vertical {

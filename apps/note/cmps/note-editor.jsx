@@ -23,7 +23,7 @@ export function NoteEditor({ note, onRemoveNote, updateNoteStyle, onDuplicateNot
         }} type="color" id={'fillerColor' + note.id} name="fillerColor" value="#ffffff" />
         <label for={'fillerColor' + note.id}><i className="fas fa-palette"></i></label>
         <button className="pin-note-btn" onClick={() => onTogglePin(note.id)}><i className={`fa-solid fa-thumbtack ${note.isPinned && 'active'}`}></i></button>
+        <Link to={`/mail/compose/${txt}`} className="fa-solid fa-paper-plane paper-link"></Link>
         <span>{note.createdAt}</span>
-        <Link to={`/mail/compose/${txt}`}>Send</Link>
     </div>
 }

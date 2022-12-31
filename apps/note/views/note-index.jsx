@@ -1,4 +1,6 @@
 const { useState, useEffect } = React
+const { Link, useNavigate } = ReactRouterDOM
+
 
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
@@ -11,7 +13,8 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState('')
-
+    const [isModal, setIsModal] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadNotes()
@@ -39,8 +42,8 @@ export function NoteIndex() {
         notesService.get(noteId)
             .then((note) => {
                 const noteTodoListToEdit = note.info.todos
-                const updatedNoteList = noteTodoListToEdit.filter((todo,index) => index !== listIndex)
-                const newNote = { ...note, info: { ...note.info, todos:[...updatedNoteList] } }
+                const updatedNoteList = noteTodoListToEdit.filter((todo, index) => index !== listIndex)
+                const newNote = { ...note, info: { ...note.info, todos: [...updatedNoteList] } }
                 notesService.save(newNote)
                     .then((updatedNote) => {
                         const updatedNotes = notes.map(note => {
@@ -58,6 +61,7 @@ export function NoteIndex() {
                 const newNotes = [...notes, newNote]
                 setNotes(newNotes)
                 showSuccessMsg('Note added!')
+                navigate('/note')
             })
     }
 
@@ -130,14 +134,27 @@ export function NoteIndex() {
             })
     }
 
+    function openModal() {
+        return <div className="modal">
+            <div className="modal-content">
+                <Link to="/"><img src="assets/img/home.png" alt="" /></Link>
+                <Link to="/about"><img src="assets/img/info.png" alt="" /></Link>
+                <Link to="/mail"><img src="assets/img/gmail.png" alt="" /></Link>
+                <Link to="/note"><img src="assets/img/keeps.png" alt="" /></Link>
+                <Link to="/book"><img src="assets/img/books.png" alt="" /></Link>
+            </div>
+        </div>
+    }
+
     if (!notes) return
     return <div className="notes-index note-layout">
         <section className="main-nav">
             <div className="appsus-nav">
-                <button className="fa-solid fa-bars"></button>
-                <div className="mail-logo">Suskeep</div>
+                <div className="note-logo">SusKeep</div>
             </div>
             <NoteFilter onSetFilter={onSetFilter} />
+            <button onClick={() => setIsModal(!isModal)} className="fa-solid fa-grip-vertical"></button>
+            {isModal && openModal()}
         </section>
         <NoteAdd onAddNote={onAddNote} />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} updateNoteStyle={updateNoteStyle} onUpdateNoteTxt={onUpdateNoteTxt} onDuplicateNote={onDuplicateNote} onUpdateNoteTodos={onUpdateNoteTodos} onTogglePin={onTogglePin} onRemoveTodo={onRemoveTodo} />

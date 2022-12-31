@@ -72,7 +72,7 @@ export function MailIndex() {
                 <Link to="/book"><img src="assets/img/books.png" alt="" /></Link>
             </div>
         </div>
-    }
+    } 
 
     return <section className="mail-index mail-layout">
         <div className="main-screen"

@@ -1,0 +1,20 @@
+button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--clr4);
+    border: 0;
+    padding: .5em;
+    color: whitesmoke;
+}
+
+button:hover {
+    transition: .3s;
+    background-color: var(--clr1);
+}
+
+input {
+    padding: .5em;
+    border: none;
+    background-color: var(--gray1);
+}

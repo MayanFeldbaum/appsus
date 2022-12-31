@@ -37,6 +37,10 @@
     align-items: center;
 }
 
+.mail-preview-head a {
+    padding: .5em;
+}
+
 .mail-preview-details {
     display: flex;
     align-items: center;

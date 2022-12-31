@@ -1,29 +1,34 @@
-.note-editor{
-display: flex;
-justify-content: space-evenly;
-margin-block-start: 10px;
+.note-editor {
+    display: flex;
+    justify-content: space-evenly;
+    margin-block-start: 10px;
 }
 
-.input-color{
-    width:5px;
+.input-color {
+    width: 5px;
 }
 
-.note-editor i{
+.note-editor i {
     cursor: pointer;
 }
 
-.note-editor .active{
-    color:#fcc427;
+.note-editor .active {
+    color: #fcc427;
 }
 
-.note-editor :hover>*{
+.note-editor :hover>* {
     transform: scale(1.2);
 }
 
-.note-editor button{
+.paper-link:link:hover,
+.paper-link:visited:hover {
+    transform: scale(1.2);
+}
+
+.note-editor button {
     background-color: transparent;
 }
 
-.note-editor>*{
+.note-editor>* {
     font-size: 1.2em;
 }

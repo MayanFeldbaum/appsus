@@ -1,0 +1,55 @@
+.book-details {
+    text-align: center;
+}
+
+.detalis-content {
+    background-color: var(--gray2);
+    border-radius: .5em;
+    display: flex;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.book-content {
+    padding: 1em;
+}
+
+.detalis-content img {
+    width: 100%;
+    border-top-left-radius: .5em;
+    border-bottom-left-radius: .5em;
+}
+
+.book-content h1 {
+    font-size: 1.25rem;
+    margin-bottom: 1em;
+}
+
+.book-content h5,
+h6 {
+    margin-bottom: 1em;
+}
+
+.book-content button,
+.book-details a {
+    border-radius: .5em;
+    margin: 0 .5em 0 .5em;
+    border-radius: .5em;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--bgc-input-clr);
+    border: 0;
+    padding: .5em;
+    color: var(--font-clr);
+    margin: 0 .5em 0 .5em;
+}
+
+.book-content button:hover,
+.book-details a:hover {
+    transition: .3s;
+    background-color: var(--hover-clr);
+    cursor: pointer;
+}

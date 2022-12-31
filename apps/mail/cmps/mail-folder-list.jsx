@@ -23,23 +23,14 @@ export function MailFolderList({ onSetFilter, numOfUnread }) {
             onClick={handleChange}>
             <span className="fa-solid fa-inbox"></span>
             <span>inbox</span>
-            <span className="num-unread">{numOfUnread}</span>
+            <span className="num-unread">{activeFolder === 'inbox' && numOfUnread}</span>
         </button>
         <button className={`sent ${activeFolder === 'sent' && 'active'}`} name="status" value="sent"
             onClick={handleChange}>
             <span className="fa-regular fa-envelope"></span>
-            sent
+            <span>sent</span>
+            <span className="num-unread">{activeFolder === 'sent' && numOfUnread}</span>
         </button>
-        {/* <button name="status" value="trash"
-            onClick={handleChange}>
-            <span className="fa-regular fa-trash-can"></span>
-            trash
-        </button>
-        <button name="status" value="draft"
-            onClick={handleChange}>
-            <span className="fa-regular fa-file"></span>
-            draft
-        </button> */}
     </section>
     // Allow viewing the sent emails
     // In the inbox show all the emails that were sent to the current user, the other

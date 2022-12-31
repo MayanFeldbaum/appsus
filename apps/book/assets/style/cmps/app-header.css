@@ -1,0 +1,28 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.app-nav {
+  font-size: 1.25rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.app-nav a {
+  padding: .5em;
+  border-radius: .5em;
+  cursor: pointer;
+
+  transition: color .6s;
+}
+
+.app-nav a:hover {
+  color: var(--clr4);
+}
+
+.app-nav a.active {
+  color: var(--clr4);
+}

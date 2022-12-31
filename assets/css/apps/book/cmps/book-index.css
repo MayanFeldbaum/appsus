@@ -1,0 +1,23 @@
+.book-index a,
+.book-index button {
+    border-radius: .5em;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--bgc-input-clr);
+    border: 0;
+    padding: .5em;
+    color: var(--font-clr);
+    margin: 0 .5em 0 .5em;
+}
+
+.book-index a:first-child {
+    margin: 0;
+    margin-top: 1em;
+    display: inline-block;
+}
+
+.book-index a:hover, .book-index button:hover {
+    transition: .3s;
+    background-color: var(--hover-clr);
+    cursor: pointer;
+}

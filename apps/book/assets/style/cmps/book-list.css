@@ -1,0 +1,30 @@
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 3em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.book-list li {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: .5em;
+}
+
+.book-container {
+    background-color: var(--gray1);
+}
+
+.book-list button {
+    margin: 0 .5em 0 .5em;
+    border-radius: .5em;
+}
+
+.book-list div {
+    margin-bottom: 1em;
+}

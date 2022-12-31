@@ -1,5 +1,5 @@
 .modal {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     right: 3.5rem;
     top: 7rem;
@@ -16,6 +16,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+}
+
+.fa-grip-vertical {
+    position: absolute;
+    right: 2em;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
 }
 
 .close {
@@ -37,4 +45,15 @@
     width: 4rem;
     height: 4rem;
     object-fit: cover;
+}
+
+@media (max-width: 420px) {
+    .modal {
+        right: 2rem;
+        top: 7rem;
+    }
+
+    .fa-grip-vertical {
+        right: .5em;
+    }
 }

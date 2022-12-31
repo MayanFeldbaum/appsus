@@ -23,3 +23,7 @@
 .mail-folder-list span {
     margin-right: .5em;
 }
+
+.num-unread {
+    margin-left: 6em;
+}

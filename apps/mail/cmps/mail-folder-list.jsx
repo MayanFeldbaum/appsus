@@ -2,8 +2,9 @@ const { useEffect, useState } = React
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailFolderList({ onSetFilter }) {
+export function MailFolderList({ onSetFilter, numOfUnread }) {
     const [filterByFolder, setFilterByFolder] = useState(mailService.getDefaultFilter())
+    const [activeFolder, setActiveFolder] = useState('inbox')
 
     useEffect(() => {
         onSetFilter(filterByFolder)
@@ -14,15 +15,17 @@ export function MailFolderList({ onSetFilter }) {
         setFilterByFolder((prevFilter) => {
             return { ...prevFilter, [field]: value }
         })
+        setActiveFolder(value)
     }
 
     return <section className="mail-folder-list">
-        <button className="active " name="status" value="inbox"
+        <button className={`inbox ${activeFolder === 'inbox' && 'active'}`} name="status" value="inbox"
             onClick={handleChange}>
             <span className="fa-solid fa-inbox"></span>
-            inbox
+            <span>inbox</span>
+            <span className="num-unread">{numOfUnread}</span>
         </button>
-        <button name="status" value="sent"
+        <button className={`sent ${activeFolder === 'sent' && 'active'}`} name="status" value="sent"
             onClick={handleChange}>
             <span className="fa-regular fa-envelope"></span>
             sent

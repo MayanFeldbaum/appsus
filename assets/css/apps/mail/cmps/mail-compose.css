@@ -25,7 +25,7 @@
 
 .btn-mail-compose {
     font-family: google-sans-medium, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bgc-input-clr);
+    background-color: rgb(190, 214, 248);
     padding: 1.5em;
     border-radius: 1em;
     margin-bottom: 1em;
@@ -38,7 +38,7 @@
 
 .mail-compose-footer button:hover,
 .btn-mail-compose:hover {
-    background-color: var(--bgc-input-clr);
+    background-color: rgb(190, 214, 248);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .mail-compose-footer button {
-    background-color: var(--bgc-input-clr);
+    background-color: rgb(190, 214, 248);
     border-radius: 1em;
     padding: 1em;
 }

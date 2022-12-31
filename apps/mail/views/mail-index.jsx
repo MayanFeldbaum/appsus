@@ -20,11 +20,15 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [filterBy, sortBy])
+    }, [filterBy, sortBy, mails])
 
     function loadMails() {
         mailService.query(filterBy, sortBy)
-            .then(mails => setMails(mails))
+            .then(mails => {
+                setMails(mails)
+                const unreadMails = mails.filter(mail => !mail.isRead)
+                setNumOfUnread(unreadMails.length)
+            })
     }
 
     function onSetFilter(filterBy) {
@@ -58,11 +62,6 @@ export function MailIndex() {
             })
     }
 
-    function numOfUnreadMail() {
-        const unreadMails = mails.filter(mail => !mail.isRead)
-        setNumOfUnread(unreadMails.length)
-    }
-
     function openModal() {
         return <div className="modal">
             <div className="modal-content">
@@ -70,10 +69,10 @@ export function MailIndex() {
             <Link to="/about"><img src="assets/img/info.png" alt="" /></Link>
             <Link to="/mail"><img src="assets/img/gmail.png" alt="" /></Link>
             <Link to="/note"><img src="assets/img/keeps.png" alt="" /></Link>
+            <Link to="/book"><img src="assets/img/books.png" alt="" /></Link>
             </div>
         </div>
     }
-
 
     return <section className="mail-index mail-layout">
         <div className="main-screen"
@@ -82,7 +81,7 @@ export function MailIndex() {
             <div className="appsus-nav">
                 <button className="fa-solid fa-bars menu-toggle-btn"
                     onClick={() => document.body.classList.toggle('menu-open')}></button>
-                <div className="mail-logo">Susmail</div>
+                <div className="mail-logo">SusMail</div>
             </div>
             <MailFilterSearch onSetFilter={onSetFilter} />
             <button onClick={() => setIsModal(!isModal)} className="fa-solid fa-grip-vertical"></button>

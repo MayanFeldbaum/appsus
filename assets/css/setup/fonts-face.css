@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: knit-medium;
+    src: url(../../fonts/kanit/Kanit-Medium.ttf);
+}
+
+@font-face {
     font-family: fa-solid;
     src: url(../../fonts/font-awesome/fa-solid-900.ttf);
 }
